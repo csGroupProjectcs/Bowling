@@ -27,3 +27,8 @@ TEST_F(FrameTests, set_isStrike_to_true)
     frame.setIsStrike();
     ASSERT_TRUE(frame.isStrike());
 }
+
+TEST_F(FrameTests, check_if_incical_isSpare_is_false)
+{
+    ASSERT_FALSE(frame.isSpare());
+}

@@ -1,6 +1,6 @@
 #include "../inc/Frame.hpp"
 
-Frame::Frame() : value_(0), isStrike_(false)
+Frame::Frame() : value_(0), isStrike_(false), isSpare_(false)
 {}
 
 void Frame::setValue(int value)
@@ -21,4 +21,9 @@ bool Frame::isStrike()
 void Frame::setIsStrike()
 {
     isStrike_ = true;
+}
+
+bool Frame::isSpare()
+{
+    return isSpare_;
 }

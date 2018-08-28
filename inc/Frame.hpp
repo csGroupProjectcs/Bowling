@@ -11,4 +11,5 @@ public:
     void setValue(int value);
     bool isStrike();
     void setIsStrike();
+    bool isSpare();
 };
