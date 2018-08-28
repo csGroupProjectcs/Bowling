@@ -8,4 +8,5 @@ class Frame
 public:
     Frame();
     int getValue();
+    void setValue(int value);
 };
