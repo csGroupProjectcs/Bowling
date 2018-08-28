@@ -32,3 +32,9 @@ TEST_F(FrameTests, check_if_incical_isSpare_is_false)
 {
     ASSERT_FALSE(frame.isSpare());
 }
+
+TEST_F(FrameTests, set_isSpare_to_true)
+{
+    frame.setIsSpare();
+    ASSERT_TRUE(frame.isSpare());
+}

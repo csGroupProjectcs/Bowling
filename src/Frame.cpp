@@ -27,3 +27,8 @@ bool Frame::isSpare()
 {
     return isSpare_;
 }
+
+void Frame::setIsSpare()
+{
+    isSpare_ = true;
+}
