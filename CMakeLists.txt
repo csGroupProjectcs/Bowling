@@ -40,8 +40,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(Bowling)
 
 set(SRC_LIST
-    inc/Bowling.hpp
     src/Bowling.cpp
+    src/Frame.cpp
+    src/Game.cpp
 )
 
 include_directories(src)
@@ -56,6 +57,8 @@ endif (UNIX)
 
 set(TEST_SRC_LIST
     tests/BowlingTests.cpp
+    tests/FrameTests.cpp
+    tests/GameTests.cpp
     tests/test_main.cpp
 )
 
