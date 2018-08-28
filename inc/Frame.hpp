@@ -7,10 +7,10 @@ class Frame
     bool isSpare_;
 public:
     Frame();
-    int getValue();
-    void setValue(int value);
-    bool isStrike();
+    int getValue() const;
+    void addValue(int value);
+    bool isStrike() const;
     void setIsStrike();
-    bool isSpare();
+    bool isSpare() const;
     void setIsSpare();
 };

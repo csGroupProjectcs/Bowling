@@ -3,6 +3,7 @@
 
 struct GameTests : public ::testing::Test
 {
+    //GIVEN
     Game game;
 };
 
@@ -13,7 +14,9 @@ TEST_F(GameTests, check_initial_name)
 
 TEST_F(GameTests, set_name_to_Adam)
 {
+    //WHEN
     game.setName("Adam");
+    //THEN
     ASSERT_EQ("Adam", game.getName());
 }
 

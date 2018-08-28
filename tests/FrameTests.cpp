@@ -3,6 +3,7 @@
 
 struct FrameTests : public ::testing::Test
 {
+    //GIVEN
     Frame frame;
 };
 
@@ -13,7 +14,9 @@ TEST_F(FrameTests, check_if_incical_value_is_zero)
 
 TEST_F(FrameTests, set_value_to_five)
 {
-    frame.setValue(5);
+    //WHEN
+    frame.addValue(5);
+    //THEN
     ASSERT_EQ(5, frame.getValue());
 }
 
@@ -24,7 +27,9 @@ TEST_F(FrameTests, check_if_incical_isStrike_is_false)
 
 TEST_F(FrameTests, set_isStrike_to_true)
 {
+    //WHEN
     frame.setIsStrike();
+    //THEN
     ASSERT_TRUE(frame.isStrike());
 }
 
@@ -35,6 +40,8 @@ TEST_F(FrameTests, check_if_incical_isSpare_is_false)
 
 TEST_F(FrameTests, set_isSpare_to_true)
 {
+    //WHEN
     frame.setIsSpare();
+    //THEN
     ASSERT_TRUE(frame.isSpare());
 }
