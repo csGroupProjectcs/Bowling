@@ -17,3 +17,8 @@ bool Frame::isStrike()
 {
     return isStrike_;
 }
+
+void Frame::setIsStrike()
+{
+    isStrike_ = true;
+}

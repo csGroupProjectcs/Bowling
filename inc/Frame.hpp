@@ -10,4 +10,5 @@ public:
     int getValue();
     void setValue(int value);
     bool isStrike();
+    void setIsStrike();
 };
