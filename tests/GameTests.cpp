@@ -6,8 +6,8 @@ struct GameTests : public ::testing::Test
     Game game;
 };
 
-TEST_F(GameTests, check_if_zero_eq_one)
+TEST_F(GameTests, check_initial_name)
 {
-    ASSERT_EQ(0, 1);
+    ASSERT_EQ("", game.getName());
 }
 
