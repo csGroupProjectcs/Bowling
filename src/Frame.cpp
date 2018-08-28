@@ -1,9 +1,7 @@
 #include "../inc/Frame.hpp"
 
-Frame::Frame() : value_(0)
-{
-
-}
+Frame::Frame() : value_(0), isStrike_(false)
+{}
 
 void Frame::setValue(int value)
 {
@@ -13,4 +11,9 @@ void Frame::setValue(int value)
 int Frame::getValue()
 {
     return value_;
+}
+
+bool Frame::isStrike()
+{
+    return isStrike_;
 }
