@@ -9,3 +9,9 @@ void Game::setName(const std::string & name)
 {
     name_ = name;
 }
+
+int Game::score() const
+{
+    //needs implementation after made checkValueFrame()
+    return 0;
+}

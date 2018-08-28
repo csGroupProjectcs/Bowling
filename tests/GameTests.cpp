@@ -17,3 +17,7 @@ TEST_F(GameTests, set_name_to_Adam)
     ASSERT_EQ("Adam", game.getName());
 }
 
+TEST_F(GameTests, initial_score_shoud_be_zero)
+{
+    ASSERT_EQ(0, game.score());
+}
