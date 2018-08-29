@@ -41,10 +41,10 @@ TEST_F(GameTests, score_should_be_ten_spare)
     ASSERT_EQ(10, game.checkValue("2/"));
 }
 
-TEST_F(GameTests, score_should_be_thirteen)
+TEST_F(GameTests, score_should_be_nine)
 {
     //WHEN
-    game.checkValue("49");
+    game.checkValue("45");
     //THEN
-    ASSERT_EQ(13, game.checkValue("49"));
+    ASSERT_EQ(9, game.checkValue("45"));
 }
