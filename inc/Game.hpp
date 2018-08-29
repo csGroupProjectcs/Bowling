@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "../inc/Frame.hpp"
+#include "Frame.hpp"
 
 class Game
 {
@@ -10,7 +10,4 @@ public:
     Game(const std::string & name = "");
     std::string getName() const;
     int score() const;
-    int checkValue(const std::string & value);
-    void checkIsStrikeOrSpare(int pos, const std::string & value);
-    void setValueFrameAndPrevFrames(int pos, const std::string & value);
 };

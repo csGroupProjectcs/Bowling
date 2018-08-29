@@ -1,4 +1,4 @@
-#include "../inc/Frame.hpp"
+#include "Frame.hpp"
 
 Frame::Frame() : value_(0), isStrike_(false), isSpare_(false)
 {}
