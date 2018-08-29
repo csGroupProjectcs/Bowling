@@ -24,3 +24,27 @@ TEST_F(GameTests, initial_score_shoud_be_zero)
 {
     ASSERT_EQ(0, game.score());
 }
+
+TEST_F(GameTests, score_should_be_ten_strike)
+{
+    //WHEN
+    game.checkValue("X ");
+    //THEN
+    ASSERT_EQ(10, game.checkValue("X "));
+}
+
+TEST_F(GameTests, score_should_be_ten_spare)
+{
+    //WHEN
+    game.checkValue("2/");
+    //THEN
+    ASSERT_EQ(10, game.checkValue("2/"));
+}
+
+TEST_F(GameTests, score_should_be_thirteen)
+{
+    //WHEN
+    game.checkValue("49");
+    //THEN
+    ASSERT_EQ(13, game.checkValue("49"));
+}
