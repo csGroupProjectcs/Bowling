@@ -7,7 +7,7 @@ class Game
     std::string name_;
     Frame frame[12];
 public:
-    Game(const std::string & name = "");
+    explicit Game(const std::string & name = "");
     std::string getName() const;
     int score() const;
 };
