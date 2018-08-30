@@ -1,13 +1,11 @@
-#include "../inc/Game.hpp"
+#include "Game.hpp"
+
+Game::Game(const std::string & name) : name_(name)
+{}
 
 std::string Game::getName() const
 {
     return name_;
-}
-
-void Game::setName(const std::string & name)
-{
-    name_ = name;
 }
 
 int Game::score() const

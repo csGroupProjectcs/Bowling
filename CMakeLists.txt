@@ -46,6 +46,7 @@ set(SRC_LIST
 )
 
 include_directories(src)
+include_directories(inc)
 add_library(${PROJECT_NAME}-lib ${SRC_LIST})
 add_executable(${PROJECT_NAME} src/main.cpp)
 

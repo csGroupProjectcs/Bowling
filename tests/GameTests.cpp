@@ -1,26 +1,23 @@
 #include <gtest/gtest.h>
-#include "../inc/Game.hpp"
+#include "Game.hpp"
 
 struct GameTests : public ::testing::Test
 {
-    //GIVEN
-    Game game;
+
 };
 
-TEST_F(GameTests, check_initial_name)
+TEST_F(GameTests, name_should_be_empty_to_default_constructor)
 {
+    //GIVEN
+    Game game;
+    //THEN
     ASSERT_EQ("", game.getName());
 }
 
-TEST_F(GameTests, set_name_to_Adam)
+TEST_F(GameTests, constructor_with_name_Adam)
 {
-    //WHEN
-    game.setName("Adam");
+    //GIVEN
+    Game game("Adam");
     //THEN
     ASSERT_EQ("Adam", game.getName());
-}
-
-TEST_F(GameTests, initial_score_shoud_be_zero)
-{
-    ASSERT_EQ(0, game.score());
 }
