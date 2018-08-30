@@ -1,13 +1,12 @@
-#include "../inc/Game.hpp"
+#include "Game.hpp"
+#include <algorithm>
+
+Game::Game(const std::string & name) : name_(name)
+{}
 
 std::string Game::getName() const
 {
     return name_;
-}
-
-void Game::setName(const std::string & name)
-{
-    name_ = name;
 }
 
 int Game::score() const
@@ -18,15 +17,17 @@ int Game::score() const
 
 int Game::checkValue(const std::string & value)
 {
-    int value_;
+    int valueInt;
+    auto valueTemp=value.substr(0,2);
     if ((value[0] == 'X') || (value[1] == '/'))
     {
-        value_ = 10;
+        valueInt = 10;
     }
     else
     {
-        value_= ((value[0] - '0')+(value[1] - '0'));
+        std::replace(valueTemp.begin(), valueTemp.end(), '-', '0');
+        valueInt= (std::stoi(valueTemp.substr(0,1)))+(std::stoi(valueTemp.substr(1,1)));
     }
 
-    return value_;
+    return valueInt;
 }
