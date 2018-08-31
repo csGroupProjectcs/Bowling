@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include <algorithm>
+
 Game::Game(const std::string & name) : name_(name)
 {}
 
