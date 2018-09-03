@@ -34,3 +34,54 @@ TEST_F(GameTests, set_Is_Strike_Or_Spare)
     ASSERT_TRUE(game.frame_[1].isSpare());
     ASSERT_TRUE(game.frame_[5].isSpare());
 }
+
+TEST_F(GameTests, score_should_be_ten_strike)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    int checkValue = game.checkValue("X ");
+    //THEN
+    ASSERT_EQ(10, checkValue);
+}
+
+TEST_F(GameTests, score_should_be_ten_spare)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    int checkValue = game.checkValue("2/");
+    //THEN
+    ASSERT_EQ(10, checkValue);
+}
+
+TEST_F(GameTests, score_should_be_nine)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    int checkValue = game.checkValue("45");
+    //THEN
+    ASSERT_EQ(9, checkValue);
+}
+
+TEST_F(GameTests, score_should_be_seven)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    int checkValue = game.checkValue("-7");
+    //THEN
+    ASSERT_EQ(7, checkValue);
+}
+
+TEST_F(GameTests, score_should_be_three)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    int checkValue = game.checkValue("3-");
+    //THEN
+    ASSERT_EQ(3, checkValue);
+}
+

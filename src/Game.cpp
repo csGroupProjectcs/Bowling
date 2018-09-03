@@ -28,3 +28,20 @@ void Game::setIsStrikeOrSpare(unsigned short int position, const std::string& va
         frame_[position].setIsSpare();
     }
 }
+
+int Game::checkValue(const std::string & value)
+{
+    int valueInt;
+    auto valueTemp=value.substr(0,2);
+    if ((value[0] == 'X') || (value[1] == '/'))
+    {
+        valueInt = 10;
+    }
+    else
+    {
+        std::replace(valueTemp.begin(), valueTemp.end(), '-', '0');
+        valueInt= (std::stoi(valueTemp.substr(0,1)))+(std::stoi(valueTemp.substr(1,1)));
+    }
+
+    return valueInt;
+}
