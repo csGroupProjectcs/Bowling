@@ -26,13 +26,23 @@ TEST_F(GameTests, set_Is_Strike_Or_Spare)
 {
     //GIVEN
     Game game;
-    game.setIsStrikeOrSpare(1, "5/");
+    //WHEN
+    game.setIsStrikeOrSpare(1, "-/");
     game.setIsStrikeOrSpare(2, "X");
-    game.setIsStrikeOrSpare(5, "/");
     //THEN
-    ASSERT_TRUE(game.frame_[2].isStrike());
-    ASSERT_TRUE(game.frame_[1].isSpare());
-    ASSERT_TRUE(game.frame_[5].isSpare());
+    ASSERT_TRUE(game.getFrame(2).isStrike());
+    ASSERT_TRUE(game.getFrame(1).isSpare());
+ }
+
+TEST_F(GameTests, get_Frame)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    Frame testingObject = game.getFrame(1);
+    testingObject.addValue(5);
+    //THEN
+    ASSERT_EQ(5, testingObject.getValue());
 }
 
 TEST_F(GameTests, score_should_be_ten_strike)

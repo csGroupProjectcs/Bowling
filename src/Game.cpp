@@ -17,13 +17,11 @@ int Game::score() const
 
 void Game::setIsStrikeOrSpare(unsigned short int position, const std::string& value)
 {
-    auto strike = std::find(value.begin(), value.end(), 'X');
-    auto spare = std::find(value.begin(), value.end(), '/');
-    if (*strike == 'X')
+    if (value[0] == 'X')
     {
         frame_[position].setIsStrike();
     }
-    if (*spare == '/')
+    if (value[1] == '/')
     {
         frame_[position].setIsSpare();
     }
@@ -44,4 +42,9 @@ int Game::checkValue(const std::string & value)
     }
 
     return valueInt;
+}
+
+Frame Game::getFrame(unsigned short int position)
+{
+    return frame_[position];
 }
