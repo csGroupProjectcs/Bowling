@@ -104,3 +104,16 @@ TEST_F(GameTests, frame_should_be_five)
     //THEN
     ASSERT_EQ(5, game.getFrame(3).getValue());
 }
+
+TEST_F(GameTests, prev_frame_should_be_15)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "2/");
+    game.setValueFrameAndPrevFrames(1, "51");
+    //THEN
+    ASSERT_EQ(15, game.getFrame(0).getValue());
+}
+
+

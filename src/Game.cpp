@@ -53,4 +53,9 @@ void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
 {
     frame_[pos].setValue(checkValue(value));
     setIsStrikeOrSpare(pos, value);
+
+    if(pos > 0 and frame_[pos-1].isSpare())
+    {
+        frame_[pos-1].addValue(value[0]-'0');
+    }
 }
