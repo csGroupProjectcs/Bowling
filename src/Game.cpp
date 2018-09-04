@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include <algorithm>
+#include <tuple>
 
 Game::Game(const std::string & name) : name_(name)
 {}
@@ -27,21 +28,11 @@ void Game::setIsStrikeOrSpare(unsigned short int position, const std::string& va
     }
 }
 
-int Game::checkValue(const std::string & value)
+int Game::checkValue(const std::string& value)
 {
-    int valueInt;
-    auto valueTemp=value.substr(0,2);
-    if ((value[0] == 'X') || (value[1] == '/'))
-    {
-        valueInt = 10;
-    }
-    else
-    {
-        std::replace(valueTemp.begin(), valueTemp.end(), '-', '0');
-        valueInt= (std::stoi(valueTemp.substr(0,1)))+(std::stoi(valueTemp.substr(1,1)));
-    }
-
-    return valueInt;
+    int firstBall, secondBall;
+    std::tie(firstBall, secondBall) = convertValueToInt(value);
+    return firstBall + secondBall;
 }
 
 std::pair <int, int> Game::convertValueToInt(const std::string& value)
@@ -74,11 +65,14 @@ Frame Game::getFrame(unsigned short int position)
 
 void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
 {
-    frame_[pos].setValue(checkValue(value));
+    int firstBall, secondBall;
+    std::tie(firstBall, secondBall) = convertValueToInt(value);
+
+    frame_[pos].setValue(firstBall + secondBall);
     setIsStrikeOrSpare(pos, value);
 
     if(pos > 0 and frame_[pos-1].isSpare())
     {
-        frame_[pos-1].addValue(value[0]-'0');
+        frame_[pos-1].addValue(firstBall);
     }
 }
