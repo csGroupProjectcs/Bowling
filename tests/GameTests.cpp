@@ -22,6 +22,29 @@ TEST_F(GameTests, constructor_with_name_Adam)
     ASSERT_EQ("Adam", game.getName());
 }
 
+TEST_F(GameTests, set_Is_Strike_Or_Spare)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setIsStrikeOrSpare(1, "-/");
+    game.setIsStrikeOrSpare(2, "X");
+    //THEN
+    ASSERT_TRUE(game.getFrame(2).isStrike());
+    ASSERT_TRUE(game.getFrame(1).isSpare());
+ }
+
+TEST_F(GameTests, get_Frame)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    Frame testingObject = game.getFrame(1);
+    testingObject.addValue(5);
+    //THEN
+    ASSERT_EQ(5, testingObject.getValue());
+}
+
 TEST_F(GameTests, score_should_be_ten_strike)
 {
     //GIVEN
@@ -71,3 +94,4 @@ TEST_F(GameTests, score_should_be_three)
     //THEN
     ASSERT_EQ(3, checkValue);
 }
+

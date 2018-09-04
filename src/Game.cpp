@@ -15,6 +15,18 @@ int Game::score() const
     return 0;
 }
 
+void Game::setIsStrikeOrSpare(unsigned short int position, const std::string& value)
+{
+    if (value[0] == 'X')
+    {
+        frame_[position].setIsStrike();
+    }
+    if (value.size() == 2 and value[1] == '/')
+    {
+        frame_[position].setIsSpare();
+    }
+}
+
 int Game::checkValue(const std::string & value)
 {
     int valueInt;
@@ -30,4 +42,9 @@ int Game::checkValue(const std::string & value)
     }
 
     return valueInt;
+}
+
+Frame Game::getFrame(unsigned short int position)
+{
+    return frame_[position];
 }

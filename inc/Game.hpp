@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <algorithm>
+
 #include "Frame.hpp"
 
 class Game
@@ -12,4 +13,7 @@ public:
     std::string getName() const;
     int score() const;
     int checkValue(const std::string & value);
+    void setIsStrikeOrSpare(unsigned short int position, const std::string& value);
+    Frame getFrame(unsigned short int position);
+    
 };
