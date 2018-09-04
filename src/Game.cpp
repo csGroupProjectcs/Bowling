@@ -21,7 +21,7 @@ void Game::setIsStrikeOrSpare(unsigned short int position, const std::string& va
     {
         frame_[position].setIsStrike();
     }
-    if (value[1] == '/')
+    if (value.size() == 2 and value[1] == '/')
     {
         frame_[position].setIsSpare();
     }
