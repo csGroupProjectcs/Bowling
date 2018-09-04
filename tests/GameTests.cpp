@@ -95,3 +95,12 @@ TEST_F(GameTests, score_should_be_three)
     ASSERT_EQ(3, checkValue);
 }
 
+TEST_F(GameTests, frame_should_be_five)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(3, "5-");
+    //THEN
+    ASSERT_EQ(5, game.getFrame(3).getValue());
+}

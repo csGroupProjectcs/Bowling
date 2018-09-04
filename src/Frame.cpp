@@ -8,6 +8,11 @@ void Frame::addValue(int value)
     value_ += value;
 }
 
+void Frame::setValue(int value)
+{
+    value_=value;
+}
+
 int Frame::getValue() const
 {
     return value_;

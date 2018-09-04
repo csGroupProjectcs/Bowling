@@ -48,3 +48,9 @@ Frame Game::getFrame(unsigned short int position)
 {
     return frame_[position];
 }
+
+void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
+{
+    frame_[pos].setValue(checkValue(value));
+    setIsStrikeOrSpare(pos, value);
+}

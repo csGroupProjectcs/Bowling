@@ -7,6 +7,7 @@ class Frame
     bool isSpare_;
 public:
     Frame();
+    void setValue(int value);
     int getValue() const;
     void addValue(int value);
     bool isStrike() const;

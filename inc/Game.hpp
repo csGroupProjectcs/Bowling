@@ -15,5 +15,5 @@ public:
     int checkValue(const std::string & value);
     void setIsStrikeOrSpare(unsigned short int position, const std::string& value);
     Frame getFrame(unsigned short int position);
-    
+    void setValueFrameAndPrevFrames(int pos, const std::string& value);
 };
