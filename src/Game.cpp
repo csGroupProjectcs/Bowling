@@ -44,6 +44,29 @@ int Game::checkValue(const std::string & value)
     return valueInt;
 }
 
+std::pair <int, int> Game::convertValueToInt(const std::string& value)
+{
+    int valInt1 = 0;
+    int valInt2 = 0;
+
+    auto valueTemp=value.substr(0,2);
+    std::replace(valueTemp.begin(), valueTemp.end(), '-', '0');
+
+    if (value[0] == 'X') valInt1 = 10;
+    else if (value[1] == '/') 
+    {
+        valInt1 = std::stoi(valueTemp.substr(0,1));
+        valInt2 = 10 - valInt1;
+    }
+    else
+    {
+        valInt1 = std::stoi(valueTemp.substr(0,1));
+        valInt2 = std::stoi(valueTemp.substr(1,1));
+    }
+
+    return std::make_pair(valInt1, valInt2);
+}
+
 Frame Game::getFrame(unsigned short int position)
 {
     return frame_[position];

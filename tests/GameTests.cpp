@@ -95,6 +95,42 @@ TEST_F(GameTests, score_should_be_three)
     ASSERT_EQ(3, checkValue);
 }
 
+TEST_F(GameTests, first_ball_should_be_3_and_second_4)
+{
+    //GIVEN
+    Game game;
+    int firstBall, secondBall;
+    //WHEN
+    std::tie(firstBall, secondBall) = game.convertValueToInt("34");
+    //THEN
+    ASSERT_EQ(3, firstBall);
+    ASSERT_EQ(4, secondBall);
+}
+
+TEST_F(GameTests, first_ball_should_be_10_and_second_0)
+{
+    //GIVEN
+    Game game;
+    int firstBall, secondBall;
+    //WHEN
+    std::tie(firstBall, secondBall) = game.convertValueToInt("X");
+    //THEN
+    ASSERT_EQ(10, firstBall);
+    ASSERT_EQ(0, secondBall);
+}
+
+TEST_F(GameTests, first_ball_should_be_0_and_second_10)
+{
+    //GIVEN
+    Game game;
+    int firstBall, secondBall;
+    //WHEN
+    std::tie(firstBall, secondBall) = game.convertValueToInt("-/");
+    //THEN
+    ASSERT_EQ(0, firstBall);
+    ASSERT_EQ(10, secondBall);
+}
+
 TEST_F(GameTests, frame_should_be_five)
 {
     //GIVEN
