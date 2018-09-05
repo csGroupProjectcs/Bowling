@@ -51,7 +51,7 @@ TEST_F(GameTests, score_should_be_ten_strike)
     Game game;
     int firstBall, secondBall, score;
     //WHEN
-    std::tie(firstBall, secondBall) = game.checkValue("X ");
+    std::tie(firstBall, secondBall) = game.checkValue("X");
     score = firstBall + secondBall;
     //THEN
     ASSERT_EQ(10, score);
@@ -174,17 +174,17 @@ TEST_F(GameTests, frame0_should_be_30)
     ASSERT_EQ(30, game.getFrame(0).getValue());
 }
 
-TEST_F(GameTests, frame4_and_frame5_should_be_20)
+TEST_F(GameTests, frame0_and_frame1_should_be_20)
 {
     //GIVEN
     Game game;
     //WHEN
-    game.setValueFrameAndPrevFrames(4, "X");
-    game.setValueFrameAndPrevFrames(5, "-/");
-    game.setValueFrameAndPrevFrames(6, "X");
+    game.setValueFrameAndPrevFrames(0, "X");
+    game.setValueFrameAndPrevFrames(1, "-/");
+    game.setValueFrameAndPrevFrames(2, "X");
     //THEN
-    ASSERT_EQ(20, game.getFrame(4).getValue());
-    ASSERT_EQ(20, game.getFrame(5).getValue());
+    ASSERT_EQ(20, game.getFrame(0).getValue());
+    ASSERT_EQ(20, game.getFrame(1).getValue());
 }
 
 TEST_F(GameTests, frame1_should_be_20_and_frame2_should_be_10)
@@ -198,4 +198,32 @@ TEST_F(GameTests, frame1_should_be_20_and_frame2_should_be_10)
     //THEN
     ASSERT_EQ(20, game.getFrame(1).getValue());
     ASSERT_EQ(10, game.getFrame(2).getValue());
+}
+
+TEST_F(GameTests, frame0_should_be_14_and_frame1_should_be_7)
+{
+    //GIVEN
+    Game game;
+    std::string frame0 = "X";
+    std::string frame1 = "34";
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, frame0);
+    game.setValueFrameAndPrevFrames(1, frame1);
+    //THEN
+    ASSERT_EQ(17, game.getFrame(0).getValue());
+    ASSERT_EQ(7, game.getFrame(1).getValue());
+}
+
+TEST_F(GameTests, frame0_should_be_7_and_frame1_should_be_4)
+{
+    //GIVEN
+    Game game;
+    std::string frame0 = "34";
+    std::string frame1 = "4";
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, frame0);
+    game.setValueFrameAndPrevFrames(1, frame1);
+    //THEN
+    ASSERT_EQ(7, game.getFrame(0).getValue());
+    ASSERT_EQ(4, game.getFrame(1).getValue());
 }

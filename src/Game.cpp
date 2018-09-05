@@ -35,17 +35,24 @@ std::pair <int, int> Game::checkValue(const std::string& value)
 
     auto valueTemp = value.substr(0, 2);
     std::replace(valueTemp.begin(), valueTemp.end(), '-', '0');
-
-    if (value[0] == 'X') firstBall = 10;
-    else if (value[1] == '/') 
+    
+    if (value.size() == 1)
     {
-        firstBall = std::stoi(valueTemp.substr(0, 1));
-        secondBall = 10 - firstBall;
+        if (value[0] == 'X') firstBall = 10;
+        else firstBall = std::stoi(valueTemp.substr(0, 1));
     }
-    else
+    else if (value.size() == 2)
     {
-        firstBall = std::stoi(valueTemp.substr(0, 1));
-        secondBall = std::stoi(valueTemp.substr(1, 1));
+        if (value[1] == '/') 
+        {
+            firstBall = std::stoi(valueTemp.substr(0, 1));
+            secondBall = 10 - firstBall;
+        }
+        else
+        {
+            firstBall = std::stoi(valueTemp.substr(0, 1));
+            secondBall = std::stoi(valueTemp.substr(1, 1));
+        }
     }
 
     return std::make_pair(firstBall, secondBall);
@@ -64,18 +71,15 @@ void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
     frame_[pos].setValue(firstBall + secondBall);
     setIsStrikeOrSpare(pos, value);
     
-    if(pos > 1 and frame_[pos - 2].isStrike())
+    if (pos > 0 and frame_[pos - 1].isStrike())
     {
-        if(frame_[pos - 1].isStrike())
-        {
-            frame_[pos - 2].addValue(10 + firstBall);
-        }
-        else
-        {
-            frame_[pos - 2].addValue(frame_[pos - 1].getValue());
-        }
+        frame_[pos - 1].addValue(firstBall + secondBall);
     }
-    if(pos > 0 and frame_[pos - 1].isSpare())
+    if( pos > 1 and frame_[pos - 2].isStrike() and frame_[pos - 1].isStrike())
+    {
+        frame_[pos - 2].addValue(firstBall);
+    }
+    if (pos > 0 and frame_[pos - 1].isSpare())
     {
         frame_[pos - 1].addValue(firstBall);
     }
