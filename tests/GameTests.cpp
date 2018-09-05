@@ -49,50 +49,60 @@ TEST_F(GameTests, score_should_be_ten_strike)
 {
     //GIVEN
     Game game;
+    int firstBall, secondBall, score;
     //WHEN
-    int checkValue = game.checkValue("X ");
+    std::tie(firstBall, secondBall) = game.checkValue("X ");
+    score = firstBall + secondBall;
     //THEN
-    ASSERT_EQ(10, checkValue);
+    ASSERT_EQ(10, score);
 }
 
 TEST_F(GameTests, score_should_be_ten_spare)
 {
     //GIVEN
     Game game;
+    int firstBall, secondBall, score;
     //WHEN
-    int checkValue = game.checkValue("2/");
+    std::tie(firstBall, secondBall) = game.checkValue("2/");
+    score = firstBall + secondBall;
     //THEN
-    ASSERT_EQ(10, checkValue);
+    ASSERT_EQ(10, score);
 }
 
 TEST_F(GameTests, score_should_be_nine)
 {
     //GIVEN
     Game game;
+    int firstBall, secondBall, score;
     //WHEN
-    int checkValue = game.checkValue("45");
+    std::tie(firstBall, secondBall) = game.checkValue("45");
+    score = firstBall + secondBall;
     //THEN
-    ASSERT_EQ(9, checkValue);
+    ASSERT_EQ(9, score);
 }
 
 TEST_F(GameTests, score_should_be_seven)
 {
     //GIVEN
     Game game;
+    int firstBall, secondBall, score;
     //WHEN
-    int checkValue = game.checkValue("-7");
+    std::tie(firstBall, secondBall) = game.checkValue("-7");
+    score = firstBall + secondBall;
     //THEN
-    ASSERT_EQ(7, checkValue);
+    ASSERT_EQ(7, score);
 }
 
 TEST_F(GameTests, score_should_be_three)
 {
     //GIVEN
     Game game;
+    int firstBall, secondBall, score;
     //WHEN
-    int checkValue = game.checkValue("3-");
+    std::tie(firstBall, secondBall) = game.checkValue("3-");
+    score = firstBall + secondBall;
     //THEN
-    ASSERT_EQ(3, checkValue);
+    ASSERT_EQ(3, score);
 }
 
 TEST_F(GameTests, first_ball_should_be_3_and_second_4)
@@ -101,7 +111,7 @@ TEST_F(GameTests, first_ball_should_be_3_and_second_4)
     Game game;
     int firstBall, secondBall;
     //WHEN
-    std::tie(firstBall, secondBall) = game.convertValueToInt("34");
+    std::tie(firstBall, secondBall) = game.checkValue("34");
     //THEN
     ASSERT_EQ(3, firstBall);
     ASSERT_EQ(4, secondBall);
@@ -113,7 +123,7 @@ TEST_F(GameTests, first_ball_should_be_10_and_second_0)
     Game game;
     int firstBall, secondBall;
     //WHEN
-    std::tie(firstBall, secondBall) = game.convertValueToInt("X");
+    std::tie(firstBall, secondBall) = game.checkValue("X");
     //THEN
     ASSERT_EQ(10, firstBall);
     ASSERT_EQ(0, secondBall);
@@ -125,7 +135,7 @@ TEST_F(GameTests, first_ball_should_be_0_and_second_10)
     Game game;
     int firstBall, secondBall;
     //WHEN
-    std::tie(firstBall, secondBall) = game.convertValueToInt("-/");
+    std::tie(firstBall, secondBall) = game.checkValue("-/");
     //THEN
     ASSERT_EQ(0, firstBall);
     ASSERT_EQ(10, secondBall);

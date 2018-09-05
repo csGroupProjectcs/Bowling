@@ -28,34 +28,27 @@ void Game::setIsStrikeOrSpare(unsigned short int position, const std::string& va
     }
 }
 
-int Game::checkValue(const std::string& value)
+std::pair <int, int> Game::checkValue(const std::string& value)
 {
-    int firstBall, secondBall;
-    std::tie(firstBall, secondBall) = convertValueToInt(value);
-    return firstBall + secondBall;
-}
-
-std::pair <int, int> Game::convertValueToInt(const std::string& value)
-{
-    int valInt1 = 0;
-    int valInt2 = 0;
+    int firstBall = 0;
+    int secondBall = 0;
 
     auto valueTemp = value.substr(0, 2);
     std::replace(valueTemp.begin(), valueTemp.end(), '-', '0');
 
-    if (value[0] == 'X') valInt1 = 10;
+    if (value[0] == 'X') firstBall = 10;
     else if (value[1] == '/') 
     {
-        valInt1 = std::stoi(valueTemp.substr(0, 1));
-        valInt2 = 10 - valInt1;
+        firstBall = std::stoi(valueTemp.substr(0, 1));
+        secondBall = 10 - firstBall;
     }
     else
     {
-        valInt1 = std::stoi(valueTemp.substr(0, 1));
-        valInt2 = std::stoi(valueTemp.substr(1, 1));
+        firstBall = std::stoi(valueTemp.substr(0, 1));
+        secondBall = std::stoi(valueTemp.substr(1, 1));
     }
 
-    return std::make_pair(valInt1, valInt2);
+    return std::make_pair(firstBall, secondBall);
 }
 
 Frame Game::getFrame(unsigned short int position)
@@ -66,7 +59,7 @@ Frame Game::getFrame(unsigned short int position)
 void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
 {
     int firstBall, secondBall;
-    std::tie(firstBall, secondBall) = convertValueToInt(value);
+    std::tie(firstBall, secondBall) = checkValue(value);
 
     frame_[pos].setValue(firstBall + secondBall);
     setIsStrikeOrSpare(pos, value);
