@@ -12,7 +12,7 @@ std::string Game::getName() const
 
 int Game::score() const
 {
-    //needs implementation after made checkValueFrame()
+    //needs implementation after made convertValueToPairOfIntsFrame()
     return 0;
 }
 
@@ -28,7 +28,7 @@ void Game::setIsStrikeOrSpare(unsigned short int position, const std::string& va
     }
 }
 
-std::pair <int, int> Game::checkValue(const std::string& value)
+std::pair <int, int> Game::convertValueToPairOfInts(const std::string& value)
 {
     int firstBall = 0;
     int secondBall = 0;
@@ -66,7 +66,7 @@ Frame Game::getFrame(unsigned short int position)
 void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
 {
     int firstBall, secondBall;
-    std::tie(firstBall, secondBall) = checkValue(value);
+    std::tie(firstBall, secondBall) = convertValueToPairOfInts(value);
 
     frame_[pos].setValue(firstBall + secondBall);
     setIsStrikeOrSpare(pos, value);
