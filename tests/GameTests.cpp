@@ -227,3 +227,154 @@ TEST_F(GameTests, frame0_should_be_7_and_frame1_should_be_4)
     ASSERT_EQ(7, game.getFrame(0).getValue());
     ASSERT_EQ(4, game.getFrame(1).getValue());
 }
+
+TEST_F(GameTests, value_of_first_8_frames_should_be_30_frame9_21_fram10_16)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "X");
+    game.setValueFrameAndPrevFrames(1, "X");
+    game.setValueFrameAndPrevFrames(2, "X");
+    game.setValueFrameAndPrevFrames(3, "X");
+    game.setValueFrameAndPrevFrames(4, "X");
+    game.setValueFrameAndPrevFrames(5, "X");
+    game.setValueFrameAndPrevFrames(6, "X");
+    game.setValueFrameAndPrevFrames(7, "X");
+    game.setValueFrameAndPrevFrames(8, "X");
+    game.setValueFrameAndPrevFrames(9, "X");
+    game.setValueFrameAndPrevFrames(10, "1");
+    game.setValueFrameAndPrevFrames(11, "5");
+    //THEN
+    ASSERT_EQ(30, game.getFrame(0).getValue());
+    ASSERT_EQ(30, game.getFrame(1).getValue());
+    ASSERT_EQ(30, game.getFrame(2).getValue());
+    ASSERT_EQ(30, game.getFrame(3).getValue());
+    ASSERT_EQ(30, game.getFrame(4).getValue());
+    ASSERT_EQ(30, game.getFrame(5).getValue());
+    ASSERT_EQ(30, game.getFrame(6).getValue());
+    ASSERT_EQ(30, game.getFrame(7).getValue());
+    ASSERT_EQ(21, game.getFrame(8).getValue());
+    ASSERT_EQ(16, game.getFrame(9).getValue());
+}
+
+
+TEST_F(GameTests, value_of_all_10_frames_should_be_30)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "X");
+    game.setValueFrameAndPrevFrames(1, "X");
+    game.setValueFrameAndPrevFrames(2, "X");
+    game.setValueFrameAndPrevFrames(3, "X");
+    game.setValueFrameAndPrevFrames(4, "X");
+    game.setValueFrameAndPrevFrames(5, "X");
+    game.setValueFrameAndPrevFrames(6, "X");
+    game.setValueFrameAndPrevFrames(7, "X");
+    game.setValueFrameAndPrevFrames(8, "X");
+    game.setValueFrameAndPrevFrames(9, "X");
+    game.setValueFrameAndPrevFrames(10, "X");
+    game.setValueFrameAndPrevFrames(11, "X");
+    //THEN
+    ASSERT_EQ(30, game.getFrame(0).getValue());
+    ASSERT_EQ(30, game.getFrame(1).getValue());
+    ASSERT_EQ(30, game.getFrame(2).getValue());
+    ASSERT_EQ(30, game.getFrame(3).getValue());
+    ASSERT_EQ(30, game.getFrame(4).getValue());
+    ASSERT_EQ(30, game.getFrame(5).getValue());
+    ASSERT_EQ(30, game.getFrame(6).getValue());
+    ASSERT_EQ(30, game.getFrame(7).getValue());
+    ASSERT_EQ(30, game.getFrame(8).getValue());
+    ASSERT_EQ(30, game.getFrame(9).getValue());
+}
+
+TEST_F(GameTests, value_of_all_10_frames_should_be_9)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "9-");
+    game.setValueFrameAndPrevFrames(1, "9-");
+    game.setValueFrameAndPrevFrames(2, "9-");
+    game.setValueFrameAndPrevFrames(3, "9-");
+    game.setValueFrameAndPrevFrames(4, "9-");
+    game.setValueFrameAndPrevFrames(5, "9-");
+    game.setValueFrameAndPrevFrames(6, "9-");
+    game.setValueFrameAndPrevFrames(7, "9-");
+    game.setValueFrameAndPrevFrames(8, "9-");
+    game.setValueFrameAndPrevFrames(9, "9-");
+    game.setValueFrameAndPrevFrames(10, "0");
+    game.setValueFrameAndPrevFrames(11, "0");
+    //THEN
+    ASSERT_EQ(9, game.getFrame(0).getValue());
+    ASSERT_EQ(9, game.getFrame(1).getValue());
+    ASSERT_EQ(9, game.getFrame(2).getValue());
+    ASSERT_EQ(9, game.getFrame(3).getValue());
+    ASSERT_EQ(9, game.getFrame(4).getValue());
+    ASSERT_EQ(9, game.getFrame(5).getValue());
+    ASSERT_EQ(9, game.getFrame(6).getValue());
+    ASSERT_EQ(9, game.getFrame(7).getValue());
+    ASSERT_EQ(9, game.getFrame(8).getValue());
+    ASSERT_EQ(9, game.getFrame(9).getValue());
+}
+
+TEST_F(GameTests, value_of_first_9_frames_should_be_15_frame10_14)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "5/");
+    game.setValueFrameAndPrevFrames(1, "5/");
+    game.setValueFrameAndPrevFrames(2, "5/");
+    game.setValueFrameAndPrevFrames(3, "5/");
+    game.setValueFrameAndPrevFrames(4, "5/");
+    game.setValueFrameAndPrevFrames(5, "5/");
+    game.setValueFrameAndPrevFrames(6, "5/");
+    game.setValueFrameAndPrevFrames(7, "5/");
+    game.setValueFrameAndPrevFrames(8, "5/");
+    game.setValueFrameAndPrevFrames(9, "5/");
+    game.setValueFrameAndPrevFrames(10, "4");
+    game.setValueFrameAndPrevFrames(11, "0");
+    //THEN
+    ASSERT_EQ(15, game.getFrame(0).getValue());
+    ASSERT_EQ(15, game.getFrame(1).getValue());
+    ASSERT_EQ(15, game.getFrame(2).getValue());
+    ASSERT_EQ(15, game.getFrame(3).getValue());
+    ASSERT_EQ(15, game.getFrame(4).getValue());
+    ASSERT_EQ(15, game.getFrame(5).getValue());
+    ASSERT_EQ(15, game.getFrame(6).getValue());
+    ASSERT_EQ(15, game.getFrame(7).getValue());
+    ASSERT_EQ(15, game.getFrame(8).getValue());
+    ASSERT_EQ(14, game.getFrame(9).getValue());
+}
+
+TEST_F(GameTests, value_of_frames_should_be_f0_20_f1_19_f2_9_f3_18_f4_8_f5_10_f6_6_f7_30_f8_28_f9_19)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "X");
+    game.setValueFrameAndPrevFrames(1, "7/");
+    game.setValueFrameAndPrevFrames(2, "9-");
+    game.setValueFrameAndPrevFrames(3, "X");
+    game.setValueFrameAndPrevFrames(4, "-8");
+    game.setValueFrameAndPrevFrames(5, "8/");
+    game.setValueFrameAndPrevFrames(6, "-6");
+    game.setValueFrameAndPrevFrames(7, "X");
+    game.setValueFrameAndPrevFrames(8, "X");
+    game.setValueFrameAndPrevFrames(9, "X");
+    game.setValueFrameAndPrevFrames(10, "8");
+    game.setValueFrameAndPrevFrames(11, "1");
+    //THEN
+    ASSERT_EQ(20, game.getFrame(0).getValue());
+    ASSERT_EQ(19, game.getFrame(1).getValue());
+    ASSERT_EQ(9, game.getFrame(2).getValue());
+    ASSERT_EQ(18, game.getFrame(3).getValue());
+    ASSERT_EQ(8, game.getFrame(4).getValue());
+    ASSERT_EQ(10, game.getFrame(5).getValue());
+    ASSERT_EQ(6, game.getFrame(6).getValue());
+    ASSERT_EQ(30, game.getFrame(7).getValue());
+    ASSERT_EQ(28, game.getFrame(8).getValue());
+    ASSERT_EQ(19, game.getFrame(9).getValue());
+}

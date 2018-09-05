@@ -71,16 +71,30 @@ void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
     frame_[pos].setValue(firstBall + secondBall);
     setIsStrikeOrSpare(pos, value);
     
-    if (pos > 0 and frame_[pos - 1].isStrike())
+    if (pos < 10)
     {
-        frame_[pos - 1].addValue(firstBall + secondBall);
+        if (pos > 0 and frame_[pos - 1].isStrike())
+        {
+            frame_[pos - 1].addValue(firstBall + secondBall);
+        }
+        if( pos > 1 and frame_[pos - 2].isStrike() and frame_[pos - 1].isStrike())
+        {
+            frame_[pos - 2].addValue(firstBall);
+        }
+        if (pos > 0 and frame_[pos - 1].isSpare())
+        {
+            frame_[pos - 1].addValue(firstBall);
+        }
     }
-    if( pos > 1 and frame_[pos - 2].isStrike() and frame_[pos - 1].isStrike())
+    else
     {
-        frame_[pos - 2].addValue(firstBall);
-    }
-    if (pos > 0 and frame_[pos - 1].isSpare())
-    {
-        frame_[pos - 1].addValue(firstBall);
+        if (frame_[pos - 1].isStrike() or frame_[pos - 1].isSpare())
+        {
+            frame_[pos - 1].addValue(firstBall);
+        }
+        if (frame_[pos - 2].isStrike() )
+        {
+            frame_[pos - 2].addValue(firstBall);
+        }
     }
 }
