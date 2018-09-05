@@ -3,7 +3,7 @@
 
 struct GameTests : public ::testing::Test
 {
-
+    int firstBall, secondBall, score;
 };
 
 TEST_F(GameTests, name_should_be_empty_to_default_constructor)
@@ -49,7 +49,6 @@ TEST_F(GameTests, score_should_be_ten_strike)
 {
     //GIVEN
     Game game;
-    int firstBall, secondBall, score;
     //WHEN
     std::tie(firstBall, secondBall) = game.checkValue("X");
     score = firstBall + secondBall;
@@ -61,7 +60,6 @@ TEST_F(GameTests, score_should_be_ten_spare)
 {
     //GIVEN
     Game game;
-    int firstBall, secondBall, score;
     //WHEN
     std::tie(firstBall, secondBall) = game.checkValue("2/");
     score = firstBall + secondBall;
@@ -73,7 +71,6 @@ TEST_F(GameTests, score_should_be_nine)
 {
     //GIVEN
     Game game;
-    int firstBall, secondBall, score;
     //WHEN
     std::tie(firstBall, secondBall) = game.checkValue("45");
     score = firstBall + secondBall;
@@ -85,7 +82,6 @@ TEST_F(GameTests, score_should_be_seven)
 {
     //GIVEN
     Game game;
-    int firstBall, secondBall, score;
     //WHEN
     std::tie(firstBall, secondBall) = game.checkValue("-7");
     score = firstBall + secondBall;
@@ -97,7 +93,6 @@ TEST_F(GameTests, score_should_be_three)
 {
     //GIVEN
     Game game;
-    int firstBall, secondBall, score;
     //WHEN
     std::tie(firstBall, secondBall) = game.checkValue("3-");
     score = firstBall + secondBall;
@@ -105,11 +100,10 @@ TEST_F(GameTests, score_should_be_three)
     ASSERT_EQ(3, score);
 }
 
-TEST_F(GameTests, first_ball_should_be_3_and_second_4)
+TEST_F(GameTests, GivenValue34ConvertValueToPairOfIntsShouldReturn3And4)
 {
     //GIVEN
     Game game;
-    int firstBall, secondBall;
     //WHEN
     std::tie(firstBall, secondBall) = game.checkValue("34");
     //THEN
@@ -117,11 +111,10 @@ TEST_F(GameTests, first_ball_should_be_3_and_second_4)
     ASSERT_EQ(4, secondBall);
 }
 
-TEST_F(GameTests, first_ball_should_be_10_and_second_0)
+TEST_F(GameTests, GivenValueStrikeConvertValueToPairOfIntsShouldReturn10And0)
 {
     //GIVEN
     Game game;
-    int firstBall, secondBall;
     //WHEN
     std::tie(firstBall, secondBall) = game.checkValue("X");
     //THEN
@@ -129,11 +122,10 @@ TEST_F(GameTests, first_ball_should_be_10_and_second_0)
     ASSERT_EQ(0, secondBall);
 }
 
-TEST_F(GameTests, first_ball_should_be_0_and_second_10)
+TEST_F(GameTests, GivenValueZeroWithSpareConvertValuesToPairOfIntsShouldReturn0And10)
 {
     //GIVEN
     Game game;
-    int firstBall, secondBall;
     //WHEN
     std::tie(firstBall, secondBall) = game.checkValue("-/");
     //THEN
@@ -141,7 +133,7 @@ TEST_F(GameTests, first_ball_should_be_0_and_second_10)
     ASSERT_EQ(10, secondBall);
 }
 
-TEST_F(GameTests, frame_should_be_five)
+TEST_F(GameTests, GivenFrameFiveWithZeroShouldHaveValue5)
 {
     //GIVEN
     Game game;
@@ -151,7 +143,7 @@ TEST_F(GameTests, frame_should_be_five)
     ASSERT_EQ(5, game.getFrame(3).getValue());
 }
 
-TEST_F(GameTests, prev_frame_should_be_15)
+TEST_F(GameTests, GivenFrameTwoWithSpareAnd51ShouldHaveValues15And6)
 {
     //GIVEN
     Game game;
@@ -160,9 +152,10 @@ TEST_F(GameTests, prev_frame_should_be_15)
     game.setValueFrameAndPrevFrames(1, "51");
     //THEN
     ASSERT_EQ(15, game.getFrame(0).getValue());
+    ASSERT_EQ(6, game.getFrame(1).getValue());
 }
 
-TEST_F(GameTests, frame0_should_be_30)
+TEST_F(GameTests, GivenThreeFramesWithStrikeShouldHaveValues30And20And10)
 {
     //GIVEN
     Game game;
@@ -172,9 +165,11 @@ TEST_F(GameTests, frame0_should_be_30)
     game.setValueFrameAndPrevFrames(2, "X");
     //THEN
     ASSERT_EQ(30, game.getFrame(0).getValue());
+    ASSERT_EQ(20, game.getFrame(1).getValue());
+    ASSERT_EQ(10, game.getFrame(2).getValue());
 }
 
-TEST_F(GameTests, frame0_and_frame1_should_be_20)
+TEST_F(GameTests, GivenFrameStrikeAndZeroWithSpareAndStrikeShouldHaveValues20And20And10)
 {
     //GIVEN
     Game game;
@@ -185,9 +180,10 @@ TEST_F(GameTests, frame0_and_frame1_should_be_20)
     //THEN
     ASSERT_EQ(20, game.getFrame(0).getValue());
     ASSERT_EQ(20, game.getFrame(1).getValue());
+    ASSERT_EQ(10, game.getFrame(2).getValue());
 }
 
-TEST_F(GameTests, frame1_should_be_20_and_frame2_should_be_10)
+TEST_F(GameTests, GivenFrameStrikeAndSixWithSpareAndTwoZerosShouldHaveValues20and10And0)
 {
     //GIVEN
     Game game;
@@ -198,9 +194,10 @@ TEST_F(GameTests, frame1_should_be_20_and_frame2_should_be_10)
     //THEN
     ASSERT_EQ(20, game.getFrame(1).getValue());
     ASSERT_EQ(10, game.getFrame(2).getValue());
+    ASSERT_EQ(0, game.getFrame(3).getValue());
 }
 
-TEST_F(GameTests, frame0_should_be_14_and_frame1_should_be_7)
+TEST_F(GameTests, GivenFrameStrikeAnd34ShouldHaveValues17and7)
 {
     //GIVEN
     Game game;
@@ -214,7 +211,7 @@ TEST_F(GameTests, frame0_should_be_14_and_frame1_should_be_7)
     ASSERT_EQ(7, game.getFrame(1).getValue());
 }
 
-TEST_F(GameTests, frame0_should_be_7_and_frame1_should_be_4)
+TEST_F(GameTests, GivenFrame34AndIncompleteFrame4ShouldHaveValues7And4)
 {
     //GIVEN
     Game game;
@@ -228,7 +225,7 @@ TEST_F(GameTests, frame0_should_be_7_and_frame1_should_be_4)
     ASSERT_EQ(4, game.getFrame(1).getValue());
 }
 
-TEST_F(GameTests, value_of_first_8_frames_should_be_30_frame9_21_fram10_16)
+TEST_F(GameTests, GivenTenFramesWitchStrikeAndOneAndFiveInBonusBallsShouldHaveValueEqual_30_InFirstEightFrames_21_AtNineFrameAnd_16_InTenFrame)
 {
     //GIVEN
     Game game;
@@ -259,7 +256,7 @@ TEST_F(GameTests, value_of_first_8_frames_should_be_30_frame9_21_fram10_16)
 }
 
 
-TEST_F(GameTests, value_of_all_10_frames_should_be_30)
+TEST_F(GameTests, GivenTenFramesWitchStrikeAndStrikeInBothBonusBallsShouldHaveValueEqual_30_InAllTenFrames)
 {
     //GIVEN
     Game game;
@@ -289,7 +286,7 @@ TEST_F(GameTests, value_of_all_10_frames_should_be_30)
     ASSERT_EQ(30, game.getFrame(9).getValue());
 }
 
-TEST_F(GameTests, value_of_all_10_frames_should_be_9)
+TEST_F(GameTests, GivenTenFramesWitchBallsNineAndZeroShouldHaveValuesNineInFirstTenFrames)
 {
     //GIVEN
     Game game;
@@ -319,7 +316,7 @@ TEST_F(GameTests, value_of_all_10_frames_should_be_9)
     ASSERT_EQ(9, game.getFrame(9).getValue());
 }
 
-TEST_F(GameTests, value_of_first_9_frames_should_be_15_frame10_14)
+TEST_F(GameTests, GivenTenFramesWithFiveAndSpareAndFourInBonusBallShouldHaveValuesInFirstNineFramesEqual15AndInLast14)
 {
     //GIVEN
     Game game;
@@ -349,7 +346,7 @@ TEST_F(GameTests, value_of_first_9_frames_should_be_15_frame10_14)
     ASSERT_EQ(14, game.getFrame(9).getValue());
 }
 
-TEST_F(GameTests, value_of_frames_should_be_f0_20_f1_19_f2_9_f3_18_f4_8_f5_10_f6_6_f7_30_f8_28_f9_19)
+TEST_F(GameTests, GivenFramesShouldHaveFollowingValues_20_19_9_18_8_10_6_30_28_19)
 {
     //GIVEN
     Game game;

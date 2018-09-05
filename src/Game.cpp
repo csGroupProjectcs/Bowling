@@ -33,7 +33,7 @@ std::pair <int, int> Game::checkValue(const std::string& value)
     int firstBall = 0;
     int secondBall = 0;
 
-    auto valueTemp = value.substr(0, 2);
+    auto valueTemp = value;
     std::replace(valueTemp.begin(), valueTemp.end(), '-', '0');
     
     if (value.size() == 1)
