@@ -10,11 +10,10 @@ int Lane::getNumberOfGames() const
 void Lane::addGame(Game game)
 {
     numberOfGames_++;
-    lanes_.push_back(game);
+    games_.push_back(game);
 }
 
 Game Lane::getGame(int number) const
 {
-    return lanes_[number];
+    return games_[number];
 }
-

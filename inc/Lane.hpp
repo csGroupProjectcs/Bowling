@@ -5,7 +5,7 @@
 class Lane
 {
     int numberOfGames_;
-    std::vector<Game> lanes_;
+    std::vector<Game> games_;
 public:
     Lane();
     void addGame(Game game);
