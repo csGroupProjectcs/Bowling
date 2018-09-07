@@ -20,3 +20,11 @@ TEST_F(GameConstructorTests,  NameShouldBeLeon)
     //THEN
     ASSERT_EQ("Leon", game.getName());
 }
+
+TEST_F(GameConstructorTests,  NameShouldBeEmpty)
+{
+    //GIVEN
+    Game game(":|X|X|X|16");
+    //THEN
+    ASSERT_EQ("", game.getName());
+}
