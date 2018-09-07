@@ -43,6 +43,7 @@ set(SRC_LIST
     src/Bowling.cpp
     src/Frame.cpp
     src/Game.cpp
+    src/Lane.cpp
 )
 
 include_directories(src)
@@ -61,6 +62,7 @@ set(TEST_SRC_LIST
     tests/FrameTests.cpp
     tests/GameTests.cpp
     tests/test_main.cpp
+    tests/LaneTests.cpp
 )
 
 link_libraries(gtest)
