@@ -7,3 +7,8 @@ int Bowling::getNumberOfLanes() const
         return numberOfLanes_;
 }
 
+void Bowling::addLane(Lane lane)
+{
+    numberOfLanes_++;
+    lanes_.push_back(lane);
+}

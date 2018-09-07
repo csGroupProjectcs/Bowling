@@ -9,4 +9,5 @@ class Bowling
 public:
     Bowling();
     int getNumberOfLanes() const;
+    void addLane(Lane lane);
 };
