@@ -1,9 +1,16 @@
 #include "Game.hpp"
 #include <algorithm>
 #include <tuple>
+#include <sstream>
 
-Game::Game(const std::string & name) : name_(name)
-{}
+Game::Game() {}
+
+Game::Game(const std::string& framesOfOneGame)
+{
+    std::stringstream frames;
+    frames << framesOfOneGame;
+    getline(frames, name_, ':');
+}
 
 std::string Game::getName() const
 {

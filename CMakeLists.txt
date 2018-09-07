@@ -60,6 +60,7 @@ set(TEST_SRC_LIST
     tests/BowlingTests.cpp
     tests/FrameTests.cpp
     tests/GameTests.cpp
+    tests/GameConstructorTests.cpp
     tests/test_main.cpp
 )
 
