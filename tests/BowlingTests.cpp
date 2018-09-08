@@ -45,12 +45,20 @@ TEST_F(BowlingTests, when_directory_to_read_no_existe_expect_in_stdout_message_W
     ASSERT_EQ("Wrong directory\n", output);
 }
 
-TEST_F(BowlingTests, when_read_directory_data_tests_expect_numberOfLanes_2_in_lane_2_in_game_2_ezpect_name_Sandra_score_16)
+TEST_F(BowlingTests, when_read_directory_data_tests_expect_numberOfLanes_3_in_lane_2_in_game_2_expect_name_Sandra_score_16)
 {
     //WHEN
     bowling.readDirectory("../tests/data_tests");
     //THEN
-    ASSERT_EQ(2, bowling.getNumberOfLanes());
+    ASSERT_EQ(3, bowling.getNumberOfLanes());
     ASSERT_EQ("Sandra", bowling.getLane(1).getGame(1).getName());
     ASSERT_EQ(16, bowling.getLane(1).getGame(1).score());
+}
+
+TEST_F(BowlingTests, when_read_empty_file_in_lane_3_expect_NumberOfGames_0)
+{
+    //WHEN
+    bowling.readDirectory("../tests/data_tests");
+    //THEN
+    ASSERT_EQ(0, bowling.getLane(2).getNumberOfGames());
 }
