@@ -28,10 +28,6 @@ matrix:
             - g++-6
             - boost1.6
 
-compiler:
-    - g++
-    - clang
-
 script:
     - mkdir build
     - cd build
