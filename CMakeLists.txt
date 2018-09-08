@@ -64,18 +64,11 @@ if(Boost_FOUND)
         target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib)
     endif (UNIX)
 
-set(TEST_SRC_LIST
-    tests/BowlingTests.cpp
-    tests/FrameTests.cpp
-    tests/GameTests.cpp
-    tests/GameConstructorTests.cpp
-    tests/test_main.cpp
-)
-
     set(TEST_SRC_LIST
         tests/BowlingTests.cpp
         tests/FrameTests.cpp
         tests/GameTests.cpp
+        tests/GameConstructorTests.cpp
         tests/test_main.cpp
         tests/LaneTests.cpp
     )

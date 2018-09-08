@@ -22,16 +22,17 @@ TEST_F(BowlingTests, add_1_lane_expect_NumberOfLanes_1)
     ASSERT_EQ(1, bowling.getNumberOfLanes());
 }
 
-TEST_F(BowlingTests, add_1_lane_with_1_game_Adam_expect_NumberOfLanes_1_and_name_game_Adam)
+TEST_F(BowlingTests, add_1_lane_with_1_game_Adam_X_2_expect_NumberOfLanes_1_name_game_Adam_score_14)
 {
     //WHEN
-    Game game("Adam");
+    Game game("Adam:X|2");
     Lane lane;
     lane.addGame(game);
     bowling.addLane(lane);
     //THEN
     ASSERT_EQ(1, bowling.getNumberOfLanes());
     ASSERT_EQ("Adam", bowling.getLane(0).getGame(0).getName());
+    ASSERT_EQ(14, bowling.getLane(0).getGame(0).score());
 }
 
 TEST_F(BowlingTests, when_directory_to_read_no_existe_expect_in_stdout_message_Wrong_directory)
@@ -44,14 +45,12 @@ TEST_F(BowlingTests, when_directory_to_read_no_existe_expect_in_stdout_message_W
     ASSERT_EQ("Wrong directory\n", output);
 }
 
-TEST_F(BowlingTests, when_read_directory_data_tests_expect_numberOfLanes_2_name_Sandra_in_lane_2_in_game_2_and_message_Wrong_file)
+TEST_F(BowlingTests, when_read_directory_data_tests_expect_numberOfLanes_2_in_lane_2_in_game_2_ezpect_name_Sandra_score_16)
 {
     //WHEN
-    testing::internal::CaptureStdout();
     bowling.readDirectory("../tests/data_tests");
-    std::string output = testing::internal::GetCapturedStdout();
     //THEN
     ASSERT_EQ(2, bowling.getNumberOfLanes());
     ASSERT_EQ("Sandra", bowling.getLane(1).getGame(1).getName());
-    ASSERT_EQ("Wrong file\n", output);
+    ASSERT_EQ(16, bowling.getLane(1).getGame(1).score());
 }

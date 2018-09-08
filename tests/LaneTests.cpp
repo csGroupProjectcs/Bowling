@@ -13,12 +13,13 @@ TEST_F(LaneTests, check_if_inicial_NumberOfGames_is_zero)
     ASSERT_EQ(0, line.getNumberOfGames());
 }
 
-TEST_F(LaneTests, add_1_game_expect_NumberOfGames_1_and_name_Leon)
+TEST_F(LaneTests, add_1_game_Leon_3spare_5_expect_NumberOfGames_1_name_Leon_score_20)
 {
     //WHEN
-    Game game1("Leon");
-    line.addGame(game1);
+    Game game("Leon:3/|5");
+    line.addGame(game);
     //THEN
     ASSERT_EQ(1, line.getNumberOfGames());
     ASSERT_EQ("Leon", line.getGame(0).getName());
+    ASSERT_EQ(20, line.getGame(0).score());
 }
