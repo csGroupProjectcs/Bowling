@@ -23,38 +23,38 @@ void Bowling::readDirectory(path p)
 {
     try
     {
-    if (is_directory(p))
-    {
-        std::vector<path> v;
-        for (auto&& x : directory_iterator(p))
-            v.push_back(x.path());
-        std::sort(v.begin(), v.end());
-        for (auto&& x : v)
+        if (is_directory(p))
         {
-            if (is_regular_file(x))
+            std::vector<path> v;
+            for (auto&& x : directory_iterator(p))
+                v.push_back(x.path());
+            std::sort(v.begin(), v.end());
+            for (auto&& x : v)
             {
-                Lane lane;
-                ifstream file {x};
-                std::string packedData;
-                while (std::getline(file, packedData))
+                if (is_regular_file(x))
                 {
-                    Game game(packedData);
-                    lane.addGame(game);
+                    Lane lane;
+                    ifstream file {x};
+                    std::string packedData;
+                    while (std::getline(file, packedData))
+                    {
+                        Game game(packedData);
+                        lane.addGame(game);
+                    }
+                    addLane(lane);
+                    file.close();
+                } else
+                {
+                    std::cout << "Wrong file" << std::endl;
                 }
-                addLane(lane);
-                file.close();
-            } else
-            {
-                std::cout << "Wrong file" << std::endl;
             }
+        } else
+        {
+            std::cout << "Wrong directory" << std::endl;
         }
-    } else
+    }
+    catch (const filesystem_error& ex)
     {
-        std::cout << "Wrong directory" << std::endl;
+        std::cout << ex.what() << '\n';
     }
-    }
-      catch (const filesystem_error& ex)
-            {
-                std::cout << ex.what() << '\n';
-            }
 }
