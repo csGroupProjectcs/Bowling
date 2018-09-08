@@ -51,3 +51,14 @@ TEST_F(GameConstructorTests,  NameShouldBeAdamAndScoreShouldBe300)
     ASSERT_EQ("Adam", game.getName());
     ASSERT_EQ(300, score);
 }
+
+TEST_F(GameConstructorTests,  NameShouldBeiMaxAndScoreShouldBe90)
+{
+    //GIVEN
+    Game game("Max:9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||");
+    //WHEN
+    score = game.score();
+    //THEN
+    ASSERT_EQ("Max", game.getName());
+    ASSERT_EQ(90, score);
+}

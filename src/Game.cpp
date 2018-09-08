@@ -18,9 +18,11 @@ Game::Game(const std::string& framesOfOneGame)
     }
     if (getline(frames, oneFrame, '|'))
     {
-        getline(frames, bonusBalls);
-        setValueFrameAndPrevFrames(10, bonusBalls.substr(0, 1));
-        setValueFrameAndPrevFrames(11, bonusBalls.substr(1, 1));
+        if (getline(frames, bonusBalls))
+        {
+            setValueFrameAndPrevFrames(10, bonusBalls.substr(0, 1));
+            setValueFrameAndPrevFrames(11, bonusBalls.substr(1, 1));
+        }
     }
 }
 
