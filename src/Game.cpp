@@ -8,8 +8,13 @@ Game::Game() {}
 Game::Game(const std::string& framesOfOneGame)
 {
     std::stringstream frames;
-    frames << framesOfOneGame;
+    frames << framesOfOneGame << '|';
+    std::string oneFrame;
     getline(frames, name_, ':');
+    for (int framePos = 0; framePos < 12 and getline(frames, oneFrame, '|'); framePos++)
+    {
+        setValueFrameAndPrevFrames(framePos, oneFrame);
+    }
 }
 
 std::string Game::getName() const
