@@ -7,9 +7,22 @@ Game::Game() {}
 
 Game::Game(const std::string& framesOfOneGame)
 {
-    std::stringstream frames;
-    frames << framesOfOneGame;
+    std::stringstream frames(framesOfOneGame);
+    std::string oneFrame;
+    std::string bonusBalls;
     getline(frames, name_, ':');
+    for (int framePos = 0; framePos < 10 and getline(frames, oneFrame, '|'); framePos++)
+    {
+        setValueFrameAndPrevFrames(framePos, oneFrame);
+    }
+    if (getline(frames, oneFrame, '|'))
+    {
+        if (getline(frames, bonusBalls))
+        {
+            setValueFrameAndPrevFrames(10, bonusBalls.substr(0, 1));
+            setValueFrameAndPrevFrames(11, bonusBalls.substr(1, 1));
+        }
+    }
 }
 
 std::string Game::getName() const
