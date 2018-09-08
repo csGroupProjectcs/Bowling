@@ -10,9 +10,8 @@ Game::Game(const std::string& framesOfOneGame)
     std::stringstream frames(framesOfOneGame);
     std::string oneFrame;
     std::string bonusBalls;
-    int framePos;
     getline(frames, name_, ':');
-    for (framePos = 0; framePos < 10 and getline(frames, oneFrame, '|'); framePos++)
+    for (int framePos = 0; framePos < 10 and getline(frames, oneFrame, '|'); framePos++)
     {
         setValueFrameAndPrevFrames(framePos, oneFrame);
     }
