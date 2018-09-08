@@ -13,9 +13,9 @@ std::string Game::getName() const
 int Game::score() const
 {
     int partialScore = 0;
-    for (int i=0; i<10; i++)
+    for (int i = 0; i < 10; i++)
     {
-        partialScore = partialScore + frame_[i].getValue();
+        partialScore += frame_[i].getValue();
     }
     return partialScore;
 }
