@@ -1,9 +1,16 @@
 #include "Game.hpp"
 #include <algorithm>
 #include <tuple>
+#include <sstream>
 
-Game::Game(const std::string & name) : name_(name)
-{}
+Game::Game() {}
+
+Game::Game(const std::string& framesOfOneGame)
+{
+    std::stringstream frames;
+    frames << framesOfOneGame;
+    getline(frames, name_, ':');
+}
 
 std::string Game::getName() const
 {
@@ -12,8 +19,12 @@ std::string Game::getName() const
 
 int Game::score() const
 {
-    //needs implementation after made convertValueToPairOfIntsFrame()
-    return 0;
+    int partialScore = 0;
+    for (int i = 0; i < 10; i++)
+    {
+        partialScore += frame_[i].getValue();
+    }
+    return partialScore;
 }
 
 void Game::setIsStrikeOrSpare(unsigned short int position, const std::string& value)

@@ -52,6 +52,6 @@ TEST_F(BowlingTests, when_read_directory_data_tests_expect_numberOfLanes_2_name_
     std::string output = testing::internal::GetCapturedStdout();
     //THEN
     ASSERT_EQ(2, bowling.getNumberOfLanes());
-    ASSERT_EQ("Sandra:", bowling.getLane(1).getGame(1).getName());
+    ASSERT_EQ("Sandra", bowling.getLane(1).getGame(1).getName());
     ASSERT_EQ("Wrong file\n", output);
 }

@@ -6,22 +6,6 @@ struct GameTests : public ::testing::Test
     int firstBall, secondBall, score;
 };
 
-TEST_F(GameTests, name_should_be_empty_to_default_constructor)
-{
-    //GIVEN
-    Game game;
-    //THEN
-    ASSERT_EQ("", game.getName());
-}
-
-TEST_F(GameTests, constructor_with_name_Adam)
-{
-    //GIVEN
-    Game game("Adam");
-    //THEN
-    ASSERT_EQ("Adam", game.getName());
-}
-
 TEST_F(GameTests, set_Is_Strike_Or_Spare)
 {
     //GIVEN
@@ -374,4 +358,104 @@ TEST_F(GameTests, GivenFramesShouldHaveFollowingValues_20_19_9_18_8_10_6_30_28_1
     ASSERT_EQ(30, game.getFrame(7).getValue());
     ASSERT_EQ(28, game.getFrame(8).getValue());
     ASSERT_EQ(19, game.getFrame(9).getValue());
+}
+TEST_F(GameTests, GivenTenFramesWitchStrikeAndStrikeInBothBonusBallsShouldHaveScoreValueEqual_300)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "X");
+    game.setValueFrameAndPrevFrames(1, "X");
+    game.setValueFrameAndPrevFrames(2, "X");
+    game.setValueFrameAndPrevFrames(3, "X");
+    game.setValueFrameAndPrevFrames(4, "X");
+    game.setValueFrameAndPrevFrames(5, "X");
+    game.setValueFrameAndPrevFrames(6, "X");
+    game.setValueFrameAndPrevFrames(7, "X");
+    game.setValueFrameAndPrevFrames(8, "X");
+    game.setValueFrameAndPrevFrames(9, "X");
+    game.setValueFrameAndPrevFrames(10, "X");
+    game.setValueFrameAndPrevFrames(11, "X");
+    //THEN
+    ASSERT_EQ(300, game.score());
+}
+TEST_F(GameTests, GivenTenFramesWitchStrikeAndOneAndFiveInBonusBallsShouldHaveScoreValueEqual_277)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "X");
+    game.setValueFrameAndPrevFrames(1, "X");
+    game.setValueFrameAndPrevFrames(2, "X");
+    game.setValueFrameAndPrevFrames(3, "X");
+    game.setValueFrameAndPrevFrames(4, "X");
+    game.setValueFrameAndPrevFrames(5, "X");
+    game.setValueFrameAndPrevFrames(6, "X");
+    game.setValueFrameAndPrevFrames(7, "X");
+    game.setValueFrameAndPrevFrames(8, "X");
+    game.setValueFrameAndPrevFrames(9, "X");
+    game.setValueFrameAndPrevFrames(10, "1");
+    game.setValueFrameAndPrevFrames(11, "5");
+    //THEN
+    ASSERT_EQ(277, game.score());
+}
+TEST_F(GameTests, GivenTenFramesWitchBallsNineAndZeroShouldHaveScoreValueEqual_90)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "9-");
+    game.setValueFrameAndPrevFrames(1, "9-");
+    game.setValueFrameAndPrevFrames(2, "9-");
+    game.setValueFrameAndPrevFrames(3, "9-");
+    game.setValueFrameAndPrevFrames(4, "9-");
+    game.setValueFrameAndPrevFrames(5, "9-");
+    game.setValueFrameAndPrevFrames(6, "9-");
+    game.setValueFrameAndPrevFrames(7, "9-");
+    game.setValueFrameAndPrevFrames(8, "9-");
+    game.setValueFrameAndPrevFrames(9, "9-");
+    game.setValueFrameAndPrevFrames(10, "0");
+    game.setValueFrameAndPrevFrames(11, "0");
+    //THEN
+    ASSERT_EQ(90, game.score());
+}
+TEST_F(GameTests, GivenTenFramesWithFiveAndSpareAndFourInBonusBallShouldHaveScoreValueEqual_149)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "5/");
+    game.setValueFrameAndPrevFrames(1, "5/");
+    game.setValueFrameAndPrevFrames(2, "5/");
+    game.setValueFrameAndPrevFrames(3, "5/");
+    game.setValueFrameAndPrevFrames(4, "5/");
+    game.setValueFrameAndPrevFrames(5, "5/");
+    game.setValueFrameAndPrevFrames(6, "5/");
+    game.setValueFrameAndPrevFrames(7, "5/");
+    game.setValueFrameAndPrevFrames(8, "5/");
+    game.setValueFrameAndPrevFrames(9, "5/");
+    game.setValueFrameAndPrevFrames(10, "4");
+    game.setValueFrameAndPrevFrames(11, "0");
+    //THEN
+    ASSERT_EQ(149, game.score());
+}
+TEST_F(GameTests, GivenTenRandomFramesShouldHaveScoreValueEqual_167)
+{
+    //GIVEN
+    Game game;
+    //WHEN
+    game.setValueFrameAndPrevFrames(0, "X");
+    game.setValueFrameAndPrevFrames(1, "7/");
+    game.setValueFrameAndPrevFrames(2, "9-");
+    game.setValueFrameAndPrevFrames(3, "X");
+    game.setValueFrameAndPrevFrames(4, "-8");
+    game.setValueFrameAndPrevFrames(5, "8/");
+    game.setValueFrameAndPrevFrames(6, "-6");
+    game.setValueFrameAndPrevFrames(7, "X");
+    game.setValueFrameAndPrevFrames(8, "X");
+    game.setValueFrameAndPrevFrames(9, "X");
+    game.setValueFrameAndPrevFrames(10, "8");
+    game.setValueFrameAndPrevFrames(11, "1");
+    //THEN
+    ASSERT_EQ(167, game.score());
 }

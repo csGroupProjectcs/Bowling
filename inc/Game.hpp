@@ -9,7 +9,8 @@ class Game
     std::string name_;
     Frame frame_[12];
 public:
-    explicit Game(const std::string & name = "");
+    Game();
+    Game(const std::string& oneLine);
     std::string getName() const;
     int score() const;
     std::pair <int, int> convertValueToPairOfInts(const std::string& value);
