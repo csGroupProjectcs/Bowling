@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 #include "Lane.hpp"
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+using namespace boost::filesystem;
 
 class Bowling
 {
@@ -11,4 +14,5 @@ public:
     int getNumberOfLanes() const;
     void addLane(Lane lane);
     Lane getLane(int number) const;
+    void readDirectory(path p);
 };

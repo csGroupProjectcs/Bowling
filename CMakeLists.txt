@@ -39,32 +39,40 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(Bowling)
 
-set(SRC_LIST
-    src/Bowling.cpp
-    src/Frame.cpp
-    src/Game.cpp
-    src/Lane.cpp
-)
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+find_package(Boost 1.67.0 COMPONENTS filesystem system)
 
-include_directories(src)
-include_directories(inc)
-add_library(${PROJECT_NAME}-lib ${SRC_LIST})
-add_executable(${PROJECT_NAME} src/main.cpp)
+if(Boost_FOUND)
+    set(SRC_LIST
+        src/Bowling.cpp
+        src/Frame.cpp
+        src/Game.cpp
+        src/Lane.cpp
+    )
 
-if (UNIX)
-    target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib pthread)
-else (UNIX)
-    target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib)
-endif (UNIX)
+    include_directories(${Boost_INCLUDE_DIRS})
+    include_directories(src)
+    include_directories(inc)
+    add_library(${PROJECT_NAME}-lib ${SRC_LIST})
+    add_executable(${PROJECT_NAME} src/main.cpp ${Boost_LIBRARIES})
 
-set(TEST_SRC_LIST
-    tests/BowlingTests.cpp
-    tests/FrameTests.cpp
-    tests/GameTests.cpp
-    tests/test_main.cpp
-    tests/LaneTests.cpp
-)
+    if (UNIX)
+        target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib pthread)
+    else (UNIX)
+        target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib)
+    endif (UNIX)
 
-link_libraries(gtest)
-add_executable(${PROJECT_NAME}-ut ${TEST_SRC_LIST})
-target_link_libraries(${PROJECT_NAME}-ut ${PROJECT_NAME}-lib)
+    set(TEST_SRC_LIST
+        tests/BowlingTests.cpp
+        tests/FrameTests.cpp
+        tests/GameTests.cpp
+        tests/test_main.cpp
+        tests/LaneTests.cpp
+    )
+
+    link_libraries(gtest)
+    add_executable(${PROJECT_NAME}-ut ${TEST_SRC_LIST})
+    target_link_libraries(${PROJECT_NAME}-ut ${PROJECT_NAME}-lib ${Boost_LIBRARIES})
+endif()
