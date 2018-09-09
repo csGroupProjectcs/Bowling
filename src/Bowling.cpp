@@ -1,5 +1,6 @@
 #include "Bowling.hpp"
 #include <iostream>
+#include <stdexcept>
 
 Bowling::Bowling() : numberOfLanes_(0) {}
 
@@ -16,6 +17,11 @@ void Bowling::addLane(Lane lane)
 
 Lane Bowling::getLane(int number) const
 {
+    if (number < 0 || number >= numberOfLanes_)
+    {
+        std::string message = "The number of lane should be in range 0 to " + std::to_string(numberOfLanes_ - 1);
+        throw std::out_of_range(message);
+    }
     return lanes_[number];
 }
 

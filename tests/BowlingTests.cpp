@@ -62,3 +62,11 @@ TEST_F(BowlingTests, when_read_empty_file_in_lane_3_expect_NumberOfGames_0)
     //THEN
     ASSERT_EQ(0, bowling.getLane(2).getNumberOfGames());
 }
+
+TEST_F(BowlingTests, when_read_directory_and_get_lane_out_of_range_expect_throw)
+{
+    //WHEN
+    bowling.readDirectory("../tests/data_tests");
+    //THEN
+    ASSERT_THROW(bowling.getLane(48), std::out_of_range);
+}
