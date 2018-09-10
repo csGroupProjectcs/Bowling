@@ -75,11 +75,11 @@ TEST_F(BowlingTests, in_toString_compare_given_data_to_expect_data)
 {
     //GIVEN
     Lane lane1;
-    Game game1("Name: 200");
+    Game game1("Name:7|9|X|X|6/|7|3|6|7|8");
     lane1.addGame(game1);
     bowling.addLane(lane1);
     //WHEN
-    std::string data = "### Lane 1: GAME STATUS ###\nName: 200\n";
+    std::string data = "### Lane 1: GAME STATUS ###\nName: 108\n";
     std::string dataFromMethod = bowling.toString();
     //THEN
     ASSERT_EQ(data, dataFromMethod);
