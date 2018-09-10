@@ -1,7 +1,8 @@
 #include "Bowling.hpp"
 #include <iostream>
 #include <stdexcept>
-
+#include <string>
+#include <sstream>
 Bowling::Bowling() : numberOfLanes_(0) {}
 
 int Bowling::getNumberOfLanes() const
@@ -63,4 +64,32 @@ void Bowling::readDirectory(path p)
     {
         std::cout << ex.what() << '\n';
     }
+}
+
+std::string Bowling::toString() const
+{
+    std::stringstream ss;
+    std::string data;
+    for (int i = 1; i <= getNumberOfLanes(); i++)
+    {
+        Lane lane = getLane(i);
+        std::string laneData;
+            laneData.insert(laneData.size(), "### Lane ");
+            laneData.insert(laneData.size(), i);
+            laneData.insert(laneData.size(), ": ");
+            laneData.insert(laneData.size(), "GAME STATUS");
+            laneData.insert(laneData.size(), " ###\n");
+        std::string namesAndScore;
+        for (int i = 1; i <= lane.getNumberOfGames(); i++)
+        {
+            namesAndScore.insert(namesAndScore.size(), lane.getGame(i).getName());
+            namesAndScore.insert(namesAndScore.size(), ' ');
+            namesAndScore.insert(namesAndScore.size(), lane.getGame(i).score());
+            namesAndScore.insert(namesAndScore.size(), "\n");
+        }
+        data.insert(data.size(), laneData);
+        data.insert(data.size(), namesAndScore);
+    }
+    ss << data;
+    return ss.str();
 }

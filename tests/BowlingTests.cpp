@@ -70,3 +70,17 @@ TEST_F(BowlingTests, when_read_directory_and_get_lane_out_of_range_expect_throw)
     //THEN
     ASSERT_THROW(bowling.getLane(48), std::out_of_range);
 }
+
+TEST_F(BowlingTests, in_toString_compare_given_data_to_expect_data)
+{
+    //GIVEN
+    Lane lane1;
+    Game game1("Name: 200");
+    lane1.addGame(game1);
+    bowling.addLane(lane1);
+    //WHEN
+    std::string data = "### Lane 1: GAME STATUS ###\nName: 200\n";
+    std::string dataFromMethod = bowling.toString();
+    //THEN
+    ASSERT_EQ(data, dataFromMethod);
+}
