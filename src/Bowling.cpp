@@ -70,20 +70,20 @@ std::string Bowling::toString() const
 {
     std::stringstream ss;
     std::string data;
-    for (int i = 1; i <= getNumberOfLanes(); i++)
+    for (int i = 0; i < getNumberOfLanes(); i++)
     {
-        Lane lane = getLane(i);
+        Lane lane = getLane(0);
         std::string laneData;
         std::stringstream no; 
-        no << i;
+        no << ++i;
         std::string numberOfLane = no.str();
             laneData.insert(laneData.size(), "### Lane ");
             laneData.insert(laneData.size(), numberOfLane);
             laneData.insert(laneData.size(), ": ");
-            laneData.insert(laneData.size(), "GAME STATUS");
+            laneData.insert(laneData.size(), "GAME STATUS"); // game status method is needed
             laneData.insert(laneData.size(), " ###\n");
         std::string namesAndScore;
-        for (int i = 1; i <= lane.getNumberOfGames(); i++)
+        for (int i = 0; i < lane.getNumberOfGames(); i++)
         {
             std::stringstream scr;
             scr << lane.getGame(i).score();
