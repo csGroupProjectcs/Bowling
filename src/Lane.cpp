@@ -36,6 +36,5 @@ std::string Lane::getStatusLane() const
         {
             return getGame(0).getStatus();
         }
-	}
-	
+    }
 }

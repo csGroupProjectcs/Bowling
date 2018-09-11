@@ -459,3 +459,18 @@ TEST_F(GameTests, GivenTenRandomFramesShouldHaveScoreValueEqual_167)
     //THEN
     ASSERT_EQ(167, game.score());
 }
+TEST_F(GameTests, GivenAnActiveGameShouldReturn_Game_in_progress)
+{
+    //GIVEN
+	Game game("Dawid:54|12|X|3/");
+	//THEN
+	ASSERT_EQ("Game in progress.", game.getStatus())
+}
+
+TEST_F(GameTests, GivenAFinishedGameShouldReturn_Game_finished)
+{
+	//GIVEN
+	Game game("Dawid:54|12|X|X|3/|11|11|11|11|11");
+	//THEN
+	ASSERT_EQ("Game finished.", game.getStatus())
+}
