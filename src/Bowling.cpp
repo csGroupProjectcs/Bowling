@@ -71,13 +71,11 @@ std::string Bowling::toString() const
     std::stringstream ss;
     for (int i = 0; i < getNumberOfLanes(); i++)
     {
-        Lane lane = getLane(0);
-        
         ss << "### Lane " << i+1 << ": " << "GAME STATUS" << " ###\n"; // game status method is needed
 
-        for (int x = 0; x < lane.getNumberOfGames(); x++)
+        for (int x = 0; x < getLane(i).getNumberOfGames(); x++)
         {
-            ss << lane.getGame(x).getName() << " " << lane.getGame(x).score() << "\n";
+            ss << getLane(i).getGame(x).getName() << " " << getLane(i).getGame(x).score() << "\n";
         }
     }
     return ss.str();
