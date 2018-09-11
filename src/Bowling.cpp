@@ -69,33 +69,16 @@ void Bowling::readDirectory(path p)
 std::string Bowling::toString() const
 {
     std::stringstream ss;
-    std::string data;
     for (int i = 0; i < getNumberOfLanes(); i++)
     {
         Lane lane = getLane(0);
-        std::string laneData;
-        std::stringstream no; 
-        no << ++i;
-        std::string numberOfLane = no.str();
-            laneData.insert(laneData.size(), "### Lane ");
-            laneData.insert(laneData.size(), numberOfLane);
-            laneData.insert(laneData.size(), ": ");
-            laneData.insert(laneData.size(), "GAME STATUS"); // game status method is needed
-            laneData.insert(laneData.size(), " ###\n");
-        std::string namesAndScore;
-        for (int i = 0; i < lane.getNumberOfGames(); i++)
+        
+        ss << "### Lane " << i+1 << ": " << "GAME STATUS" << " ###\n"; // game status method is needed
+
+        for (int x = 0; x < lane.getNumberOfGames(); x++)
         {
-            std::stringstream scr;
-            scr << lane.getGame(i).score();
-            std::string score = scr.str();
-            namesAndScore.insert(namesAndScore.size(), lane.getGame(i).getName());
-            namesAndScore.insert(namesAndScore.size(), " ");
-            namesAndScore.insert(namesAndScore.size(), score);
-            namesAndScore.insert(namesAndScore.size(), "\n");
+            ss << lane.getGame(x).getName() << " " << lane.getGame(x).score() << "\n";
         }
-        data.insert(data.size(), laneData);
-        data.insert(data.size(), namesAndScore);
     }
-    ss << data;
     return ss.str();
 }
