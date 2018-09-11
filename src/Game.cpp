@@ -10,7 +10,7 @@ Game::Game(const std::string& framesOfOneGame)
     std::stringstream frames(framesOfOneGame);
     std::string oneFrame;
     std::string bonusBalls;
-	int numberFrames = 10;
+    int numberFrames = 10;
     getline(frames, name_, ':');
     for (int framePos = 0; framePos < 10 and getline(frames, oneFrame, '|'); framePos++)
     {
@@ -144,6 +144,6 @@ std::string Game::getStatus()
     }
     else if (currentRolls_ != numberRolls_)
     {
-        return "Game in progress."
+        return "Game in progress.";
     }
 }
