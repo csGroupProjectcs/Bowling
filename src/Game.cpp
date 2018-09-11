@@ -10,6 +10,7 @@ Game::Game(const std::string& framesOfOneGame)
     std::stringstream frames(framesOfOneGame);
     std::string oneFrame;
     std::string bonusBalls;
+	int numberFrames = 10;
     getline(frames, name_, ':');
     for (int framePos = 0; framePos < 10 and getline(frames, oneFrame, '|'); framePos++)
     {
@@ -121,4 +122,28 @@ void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
             frame_[pos - 2].addValue(firstBall);
         }
     }
+	currentRolls_++;
+	if (pos == 9 && value.size() == 2 && value[1] == '/')
+	{
+		numberRolls_ = 11;
+	}
+	if (pos == 9 && value[0] == 'X')
+	{
+		numberRolls_ = 12;
+	}
+	if (pos == 9 && value.size() == 1)
+	{
+		currentRolls_ = 9;
+	}
+}
+std::string Game::getStatus()
+{
+	if (currentRolls_ == numberRolls_)
+	{
+		return "Game finished.";
+	}
+	else if (currentRolls_ != numberRolls_)
+	{
+		return "Game in progress."
+	}
 }

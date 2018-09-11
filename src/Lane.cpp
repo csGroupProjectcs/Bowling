@@ -23,3 +23,16 @@ Game Lane::getGame(int number) const
     }
     return games_[number];
 }
+
+std::string Lane::getStatusLane() const
+{
+	if (numberOfGames_ == 0)
+	{
+		return "No games";
+	}
+	if (numberOfGames != 0)
+	{
+		return getGame(0).getStatus();
+	}
+	
+}
