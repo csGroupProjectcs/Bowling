@@ -135,7 +135,7 @@ void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
         currentRolls_ = 9;
     }
 }
-std::string Game::getStatus(int currentRolls_, int numberRolls_)
+std::string Game::getStatus()
 {
     if (currentRolls_ == numberRolls_)
     {
