@@ -8,8 +8,8 @@ class Game
 {
     std::string name_;
     Frame frame_[12];
-	int numberRolls_;
-	int currentRolls_;
+    int numberRolls_;
+    int currentRolls_;
 public:
     Game();
     explicit Game(const std::string& oneLine);
@@ -19,6 +19,6 @@ public:
     void setIsStrikeOrSpare(unsigned short int position, const std::string& value);
     Frame getFrame(unsigned short int position);
     void setValueFrameAndPrevFrames(int pos, const std::string& value);
-	int numberFrames;
-	std::string getStatus();
+    int numberFrames;
+    std::string getStatus();
 };

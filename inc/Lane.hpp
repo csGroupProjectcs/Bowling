@@ -11,5 +11,5 @@ public:
     void addGame(Game game);
     Game getGame(int number) const;
     int getNumberOfGames() const;
-	std::string getStatusLane() const;
+    std::string getStatusLane() const;
 };
