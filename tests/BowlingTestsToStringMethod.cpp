@@ -86,7 +86,7 @@ TEST_F(BowlingTests, toString_compare_given_data_to_many_lanes_and_many_games_an
     Game game7("Name7:7|9|X|X|6/|X|X|6|7|8");
     Game game8("Name8:7|9|X|X|8|9|3|6|7|8");
     Game game9("Name9:7|X|X|X|6/|8|3|6|X|8");
-    Game game10("Name10:X|X|X|X|X|X|X|X|X|X|X|X");
+    Game game10("Name10:X|X|X|X|X|X|X|X|X|X||XX");
     lane3.addGame(game7);
     lane3.addGame(game8);
     lane3.addGame(game9);
@@ -94,7 +94,7 @@ TEST_F(BowlingTests, toString_compare_given_data_to_many_lanes_and_many_games_an
     bowling.addLane(lane3);
 
     //WHEN
-    std::string data = "### Lane 1: GAME STATUS ###\n### Lane 2: GAME STATUS ###\nName4 71\nName5 90\nName6 67\n### Lane 3: GAME STATUS ###\nName7 145\nName8 103\nName9 144\nName10 290\n";
+    std::string data = "### Lane 1: GAME STATUS ###\n### Lane 2: GAME STATUS ###\nName4 71\nName5 90\nName6 67\n### Lane 3: GAME STATUS ###\nName7 145\nName8 103\nName9 144\nName10 300\n";
     std::string dataFromMethod = bowling.toString();
     //THEN
     ASSERT_EQ(data, dataFromMethod);
