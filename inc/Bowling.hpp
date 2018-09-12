@@ -17,4 +17,5 @@ public:
     void readDirectory(path p);
     std::string toString() const;
     void print() const;
+    void writingDataToFile(std::string directory) const;
 };

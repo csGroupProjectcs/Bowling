@@ -78,6 +78,7 @@ if(Boost_FOUND)
         tests/LaneTests.cpp
         tests/BowlingTestsToStringMethod.cpp
         tests/specificBehaviorTests.cpp
+        tests/BowlingTestSaveFile.cpp
     )
 
     link_libraries(gtest)
