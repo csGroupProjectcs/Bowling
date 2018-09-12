@@ -4,6 +4,14 @@
 struct GameTests : public ::testing::Test
 {
     int firstBall, secondBall, score;
+    Game game;
+    void FillSetValueFrameAndPrevFrames(std::string frameScore[12])
+    {
+        for (int i=0; i<12; i++)
+        {
+            game.setValueFrameAndPrevFrames(i, frameScore[i]);
+        }
+    }
 };
 
 TEST_F(GameTests, set_Is_Strike_Or_Spare)
@@ -212,20 +220,9 @@ TEST_F(GameTests, GivenFrame34AndIncompleteFrame4ShouldHaveValues7And4)
 TEST_F(GameTests, GivenTenFramesWitchStrikeAndOneAndFiveInBonusBallsShouldHaveValueEqual_30_InFirstEightFrames_21_AtNineFrameAnd_16_InTenFrame)
 {
     //GIVEN
-    Game game;
+    std::string tenStrikeAnd1And5BonusValue[] = {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "1", "5"};
     //WHEN
-    game.setValueFrameAndPrevFrames(0, "X");
-    game.setValueFrameAndPrevFrames(1, "X");
-    game.setValueFrameAndPrevFrames(2, "X");
-    game.setValueFrameAndPrevFrames(3, "X");
-    game.setValueFrameAndPrevFrames(4, "X");
-    game.setValueFrameAndPrevFrames(5, "X");
-    game.setValueFrameAndPrevFrames(6, "X");
-    game.setValueFrameAndPrevFrames(7, "X");
-    game.setValueFrameAndPrevFrames(8, "X");
-    game.setValueFrameAndPrevFrames(9, "X");
-    game.setValueFrameAndPrevFrames(10, "1");
-    game.setValueFrameAndPrevFrames(11, "5");
+    FillSetValueFrameAndPrevFrames(tenStrikeAnd1And5BonusValue);
     //THEN
     ASSERT_EQ(30, game.getFrame(0).getValue());
     ASSERT_EQ(30, game.getFrame(1).getValue());
@@ -243,20 +240,9 @@ TEST_F(GameTests, GivenTenFramesWitchStrikeAndOneAndFiveInBonusBallsShouldHaveVa
 TEST_F(GameTests, GivenTenFramesWitchStrikeAndStrikeInBothBonusBallsShouldHaveValueEqual_30_InAllTenFrames)
 {
     //GIVEN
-    Game game;
+    std::string tenStrikeAndTwoStrikeBonusValue[] = {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"};
     //WHEN
-    game.setValueFrameAndPrevFrames(0, "X");
-    game.setValueFrameAndPrevFrames(1, "X");
-    game.setValueFrameAndPrevFrames(2, "X");
-    game.setValueFrameAndPrevFrames(3, "X");
-    game.setValueFrameAndPrevFrames(4, "X");
-    game.setValueFrameAndPrevFrames(5, "X");
-    game.setValueFrameAndPrevFrames(6, "X");
-    game.setValueFrameAndPrevFrames(7, "X");
-    game.setValueFrameAndPrevFrames(8, "X");
-    game.setValueFrameAndPrevFrames(9, "X");
-    game.setValueFrameAndPrevFrames(10, "X");
-    game.setValueFrameAndPrevFrames(11, "X");
+    FillSetValueFrameAndPrevFrames(tenStrikeAndTwoStrikeBonusValue);
     //THEN
     ASSERT_EQ(30, game.getFrame(0).getValue());
     ASSERT_EQ(30, game.getFrame(1).getValue());
@@ -273,20 +259,9 @@ TEST_F(GameTests, GivenTenFramesWitchStrikeAndStrikeInBothBonusBallsShouldHaveVa
 TEST_F(GameTests, GivenTenFramesWitchBallsNineAndZeroShouldHaveValuesNineInFirstTenFrames)
 {
     //GIVEN
-    Game game;
+    std::string ten9And0BonusValue[] = {"9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "0", "0"};
     //WHEN
-    game.setValueFrameAndPrevFrames(0, "9-");
-    game.setValueFrameAndPrevFrames(1, "9-");
-    game.setValueFrameAndPrevFrames(2, "9-");
-    game.setValueFrameAndPrevFrames(3, "9-");
-    game.setValueFrameAndPrevFrames(4, "9-");
-    game.setValueFrameAndPrevFrames(5, "9-");
-    game.setValueFrameAndPrevFrames(6, "9-");
-    game.setValueFrameAndPrevFrames(7, "9-");
-    game.setValueFrameAndPrevFrames(8, "9-");
-    game.setValueFrameAndPrevFrames(9, "9-");
-    game.setValueFrameAndPrevFrames(10, "0");
-    game.setValueFrameAndPrevFrames(11, "0");
+    FillSetValueFrameAndPrevFrames(ten9And0BonusValue);
     //THEN
     ASSERT_EQ(9, game.getFrame(0).getValue());
     ASSERT_EQ(9, game.getFrame(1).getValue());
@@ -303,20 +278,9 @@ TEST_F(GameTests, GivenTenFramesWitchBallsNineAndZeroShouldHaveValuesNineInFirst
 TEST_F(GameTests, GivenTenFramesWithFiveAndSpareAndFourInBonusBallShouldHaveValuesInFirstNineFramesEqual15AndInLast14)
 {
     //GIVEN
-    Game game;
+    std::string ten5And4BonusValue[] = {"5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "4", "0"};
     //WHEN
-    game.setValueFrameAndPrevFrames(0, "5/");
-    game.setValueFrameAndPrevFrames(1, "5/");
-    game.setValueFrameAndPrevFrames(2, "5/");
-    game.setValueFrameAndPrevFrames(3, "5/");
-    game.setValueFrameAndPrevFrames(4, "5/");
-    game.setValueFrameAndPrevFrames(5, "5/");
-    game.setValueFrameAndPrevFrames(6, "5/");
-    game.setValueFrameAndPrevFrames(7, "5/");
-    game.setValueFrameAndPrevFrames(8, "5/");
-    game.setValueFrameAndPrevFrames(9, "5/");
-    game.setValueFrameAndPrevFrames(10, "4");
-    game.setValueFrameAndPrevFrames(11, "0");
+    FillSetValueFrameAndPrevFrames(ten5And4BonusValue);
     //THEN
     ASSERT_EQ(15, game.getFrame(0).getValue());
     ASSERT_EQ(15, game.getFrame(1).getValue());
@@ -333,20 +297,9 @@ TEST_F(GameTests, GivenTenFramesWithFiveAndSpareAndFourInBonusBallShouldHaveValu
 TEST_F(GameTests, GivenFramesShouldHaveFollowingValues_20_19_9_18_8_10_6_30_28_19)
 {
     //GIVEN
-    Game game;
+    std::string randomValue[] = {"X", "7/", "9-", "X", "-8", "8/", "-6", "X", "X", "X", "8", "1"};
     //WHEN
-    game.setValueFrameAndPrevFrames(0, "X");
-    game.setValueFrameAndPrevFrames(1, "7/");
-    game.setValueFrameAndPrevFrames(2, "9-");
-    game.setValueFrameAndPrevFrames(3, "X");
-    game.setValueFrameAndPrevFrames(4, "-8");
-    game.setValueFrameAndPrevFrames(5, "8/");
-    game.setValueFrameAndPrevFrames(6, "-6");
-    game.setValueFrameAndPrevFrames(7, "X");
-    game.setValueFrameAndPrevFrames(8, "X");
-    game.setValueFrameAndPrevFrames(9, "X");
-    game.setValueFrameAndPrevFrames(10, "8");
-    game.setValueFrameAndPrevFrames(11, "1");
+    FillSetValueFrameAndPrevFrames(randomValue);
     //THEN
     ASSERT_EQ(20, game.getFrame(0).getValue());
     ASSERT_EQ(19, game.getFrame(1).getValue());
@@ -362,100 +315,45 @@ TEST_F(GameTests, GivenFramesShouldHaveFollowingValues_20_19_9_18_8_10_6_30_28_1
 TEST_F(GameTests, GivenTenFramesWitchStrikeAndStrikeInBothBonusBallsShouldHaveScoreValueEqual_300)
 {
     //GIVEN
-    Game game;
+    std::string tenStrikeAndTwoStrikeBonusValue[] = {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"};
     //WHEN
-    game.setValueFrameAndPrevFrames(0, "X");
-    game.setValueFrameAndPrevFrames(1, "X");
-    game.setValueFrameAndPrevFrames(2, "X");
-    game.setValueFrameAndPrevFrames(3, "X");
-    game.setValueFrameAndPrevFrames(4, "X");
-    game.setValueFrameAndPrevFrames(5, "X");
-    game.setValueFrameAndPrevFrames(6, "X");
-    game.setValueFrameAndPrevFrames(7, "X");
-    game.setValueFrameAndPrevFrames(8, "X");
-    game.setValueFrameAndPrevFrames(9, "X");
-    game.setValueFrameAndPrevFrames(10, "X");
-    game.setValueFrameAndPrevFrames(11, "X");
+    FillSetValueFrameAndPrevFrames(tenStrikeAndTwoStrikeBonusValue);
     //THEN
     ASSERT_EQ(300, game.score());
 }
 TEST_F(GameTests, GivenTenFramesWitchStrikeAndOneAndFiveInBonusBallsShouldHaveScoreValueEqual_277)
 {
     //GIVEN
-    Game game;
+    std::string tenStrikeAnd1And5BonusValue[] = {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "1", "5"};
     //WHEN
-    game.setValueFrameAndPrevFrames(0, "X");
-    game.setValueFrameAndPrevFrames(1, "X");
-    game.setValueFrameAndPrevFrames(2, "X");
-    game.setValueFrameAndPrevFrames(3, "X");
-    game.setValueFrameAndPrevFrames(4, "X");
-    game.setValueFrameAndPrevFrames(5, "X");
-    game.setValueFrameAndPrevFrames(6, "X");
-    game.setValueFrameAndPrevFrames(7, "X");
-    game.setValueFrameAndPrevFrames(8, "X");
-    game.setValueFrameAndPrevFrames(9, "X");
-    game.setValueFrameAndPrevFrames(10, "1");
-    game.setValueFrameAndPrevFrames(11, "5");
+    FillSetValueFrameAndPrevFrames(tenStrikeAnd1And5BonusValue);
     //THEN
     ASSERT_EQ(277, game.score());
 }
 TEST_F(GameTests, GivenTenFramesWitchBallsNineAndZeroShouldHaveScoreValueEqual_90)
 {
     //GIVEN
-    Game game;
+    std::string ten9And0BonusValue[] = {"9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "0", "0"};
     //WHEN
-    game.setValueFrameAndPrevFrames(0, "9-");
-    game.setValueFrameAndPrevFrames(1, "9-");
-    game.setValueFrameAndPrevFrames(2, "9-");
-    game.setValueFrameAndPrevFrames(3, "9-");
-    game.setValueFrameAndPrevFrames(4, "9-");
-    game.setValueFrameAndPrevFrames(5, "9-");
-    game.setValueFrameAndPrevFrames(6, "9-");
-    game.setValueFrameAndPrevFrames(7, "9-");
-    game.setValueFrameAndPrevFrames(8, "9-");
-    game.setValueFrameAndPrevFrames(9, "9-");
-    game.setValueFrameAndPrevFrames(10, "0");
-    game.setValueFrameAndPrevFrames(11, "0");
+    FillSetValueFrameAndPrevFrames(ten9And0BonusValue);
     //THEN
     ASSERT_EQ(90, game.score());
 }
 TEST_F(GameTests, GivenTenFramesWithFiveAndSpareAndFourInBonusBallShouldHaveScoreValueEqual_149)
 {
     //GIVEN
-    Game game;
-    //WHEN
-    game.setValueFrameAndPrevFrames(0, "5/");
-    game.setValueFrameAndPrevFrames(1, "5/");
-    game.setValueFrameAndPrevFrames(2, "5/");
-    game.setValueFrameAndPrevFrames(3, "5/");
-    game.setValueFrameAndPrevFrames(4, "5/");
-    game.setValueFrameAndPrevFrames(5, "5/");
-    game.setValueFrameAndPrevFrames(6, "5/");
-    game.setValueFrameAndPrevFrames(7, "5/");
-    game.setValueFrameAndPrevFrames(8, "5/");
-    game.setValueFrameAndPrevFrames(9, "5/");
-    game.setValueFrameAndPrevFrames(10, "4");
-    game.setValueFrameAndPrevFrames(11, "0");
+    std::string ten5And4BonusValue[] = {"5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "4", "0"};
+    //WHEN  
+    FillSetValueFrameAndPrevFrames(ten5And4BonusValue);
     //THEN
     ASSERT_EQ(149, game.score());
 }
 TEST_F(GameTests, GivenTenRandomFramesShouldHaveScoreValueEqual_167)
 {
     //GIVEN
-    Game game;
+    std::string randomValue[] = {"X", "7/", "9-", "X", "-8", "8/", "-6", "X", "X", "X", "8", "1"};
     //WHEN
-    game.setValueFrameAndPrevFrames(0, "X");
-    game.setValueFrameAndPrevFrames(1, "7/");
-    game.setValueFrameAndPrevFrames(2, "9-");
-    game.setValueFrameAndPrevFrames(3, "X");
-    game.setValueFrameAndPrevFrames(4, "-8");
-    game.setValueFrameAndPrevFrames(5, "8/");
-    game.setValueFrameAndPrevFrames(6, "-6");
-    game.setValueFrameAndPrevFrames(7, "X");
-    game.setValueFrameAndPrevFrames(8, "X");
-    game.setValueFrameAndPrevFrames(9, "X");
-    game.setValueFrameAndPrevFrames(10, "8");
-    game.setValueFrameAndPrevFrames(11, "1");
+    FillSetValueFrameAndPrevFrames(randomValue);
     //THEN
     ASSERT_EQ(167, game.score());
 }
