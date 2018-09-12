@@ -15,4 +15,6 @@ public:
     void addLane(Lane lane);
     Lane getLane(int number) const;
     void readDirectory(path p);
+    std::string toString() const;
+    void writingDataToFile(std::string directory) const;
 };
