@@ -50,6 +50,7 @@ if(Boost_FOUND)
         src/Frame.cpp
         src/Game.cpp
         src/Lane.cpp
+        src/specificBehavior.cpp
     )
 
     include_directories(${Boost_INCLUDE_DIRS})
@@ -73,6 +74,7 @@ if(Boost_FOUND)
         tests/test_main.cpp
         tests/LaneTests.cpp
         tests/BowlingTestsToStringMethod.cpp
+        tests/specificBehaviorTests.cpp
     )
 
     link_libraries(gtest)
