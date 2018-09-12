@@ -3,6 +3,8 @@
 #include <stdexcept>
 #include <string>
 #include <sstream>
+#include <fstream>
+
 Bowling::Bowling() : numberOfLanes_(0) {}
 
 int Bowling::getNumberOfLanes() const
@@ -81,7 +83,20 @@ std::string Bowling::toString() const
     return ss.str();
 }
 
-void Bowling::showScoreOnScreen() const
+void Bowling::writingDataToFile(std::string directory) const
 {
-    std::cout << toString();
+    std::fstream dataOut;
+    dataOut.exceptions ( std::ifstream::failbit | std::ifstream::badbit );
+    try
+    {
+        
+        dataOut.open(directory, std::ios::out);
+        if (dataOut.is_open() == false) throw std::runtime_error("file does not exist");
+        dataOut << toString();
+        dataOut.close();
+    }
+    catch (std::ifstream::failure ex) 
+    {
+    std::cerr << "Exception opening/closing file" << std::endl;
+    }
 }

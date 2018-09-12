@@ -16,5 +16,5 @@ public:
     Lane getLane(int number) const;
     void readDirectory(path p);
     std::string toString() const;
-    void showScoreOnScreen() const;
+    void writingDataToFile(std::string directory) const;
 };
