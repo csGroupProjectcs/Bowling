@@ -17,7 +17,7 @@ void specificBehavior(int argc, char* argv[])
         {
             Bowling bowling;
             bowling.readDirectory(argv[1]);
-            //bowling.print();
+            bowling.print();
         }
     }
     if (argc == 3)

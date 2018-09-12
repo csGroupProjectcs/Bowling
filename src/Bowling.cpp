@@ -80,3 +80,8 @@ std::string Bowling::toString() const
     }
     return ss.str();
 }
+
+void Bowling::print() const
+{
+    std::cout << toString();
+}
