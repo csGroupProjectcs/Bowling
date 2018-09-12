@@ -40,7 +40,7 @@ TEST_F(LaneTests, adding_a_game_in_progress)
     Lane lane;
     lane.addGame(game);
     //THEN
-    ASSERT_EQ("Game in progress.", lane.getStatusLane());
+    ASSERT_EQ("game in progress", lane.getStatusLane());
 }
 
 TEST_F(LaneTests, adding_a_finished_game)
@@ -50,7 +50,7 @@ TEST_F(LaneTests, adding_a_finished_game)
     Lane lane;
     lane.addGame(game);
     //THEN
-    ASSERT_EQ("Game finished.", lane.getStatusLane());
+    ASSERT_EQ("game finished", lane.getStatusLane());
 }
 
 TEST_F(LaneTests, no_game)
@@ -59,6 +59,6 @@ TEST_F(LaneTests, no_game)
     Game game("Boniek:12|X");
     Lane lane;
     //THEN
-    ASSERT_EQ("No games.", lane.getStatusLane());
+    ASSERT_EQ("no game", lane.getStatusLane());
 }
 

@@ -464,7 +464,7 @@ TEST_F(GameTests, GivenAnActiveGameShouldReturn_Game_in_progress)
     //GIVEN
 	Game game("Dawid:54|12|X|3/");
 	//THEN
-	ASSERT_EQ("Game in progress.", game.getStatus());
+        ASSERT_EQ("game in progress", game.getStatusGame());
 }
 
 TEST_F(GameTests, GivenAFinishedGameShouldReturn_Game_finished)
@@ -472,5 +472,13 @@ TEST_F(GameTests, GivenAFinishedGameShouldReturn_Game_finished)
 	//GIVEN
 	Game game("Dawid:54|12|X|X|3/|11|11|11|11|11");
 	//THEN
-	ASSERT_EQ("Game finished.", game.getStatus());
+        ASSERT_EQ("game finished", game.getStatusGame());
+}
+
+TEST_F(GameTests, GivenAFinishedGamewithbonusballsShouldReturn_Game_finished)
+{
+        //GIVEN
+        Game game("Dawid:54|12|X|X|3/|11|11|11|11|1/2");
+        //THEN
+        ASSERT_EQ("game finished", game.getStatusGame());
 }
