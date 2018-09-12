@@ -82,5 +82,5 @@ TEST_F(BowlingTests, add_1_lane_with_1_game_Adam_X_2_expect_message_in_stdout_La
     bowling.print();
     std::string output = testing::internal::GetCapturedStdout();
     //THEN
-    ASSERT_EQ("### Lane 1: GAME STATUS ###\nAdam 14\n", output);
+    ASSERT_EQ("### Lane 1: game in progress ###\nAdam 14\n", output);
 }

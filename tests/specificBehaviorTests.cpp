@@ -39,7 +39,7 @@ TEST_F(specificBehaviorTests, given_path_to_directory_expect_information_about_g
     specificBehavior(2, input);
     std::string output = testing::internal::GetCapturedStdout();
     //THEN
-    ASSERT_EQ("### Lane 1: GAME STATUS ###\nHenryk 24\n### Lane 2: GAME STATUS ###\nKevin 16\nSandra 16\n### Lane 3: GAME STATUS ###\n", output);
+    ASSERT_EQ("### Lane 1: game in progress ###\nHenryk 24\n### Lane 2: game in progress ###\nKevin 16\nSandra 16\n### Lane 3: no game ###\n", output);
 }
 
 TEST_F(specificBehaviorTests, given_path_to_directory_and_name_of_file_expect_save_information_about_game_in_to_the_file)
@@ -57,5 +57,5 @@ TEST_F(specificBehaviorTests, given_path_to_directory_and_name_of_file_expect_sa
         output += dataLine;
     }
     //THEN
-    ASSERT_EQ("### Lane 1: GAME STATUS ###Henryk 24### Lane 2: GAME STATUS ###Kevin 16Sandra 16### Lane 3: GAME STATUS ###", output);
+    ASSERT_EQ("### Lane 1: game in progress ###Henryk 24### Lane 2: game in progress ###Kevin 16Sandra 16### Lane 3: no game ###", output);
 }
