@@ -464,7 +464,7 @@ TEST_F(GameTests, GivenAnActiveGameShouldReturn_Game_in_progress)
     //GIVEN
 	Game game("Dawid:54|12|X|3/");
 	//THEN
-	ASSERT_EQ("Gamss", game.getStatus());
+	ASSERT_EQ("Game in progress.", game.getStatus());
 }
 
 TEST_F(GameTests, GivenAFinishedGameShouldReturn_Game_finished)

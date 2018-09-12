@@ -32,3 +32,33 @@ TEST_F(LaneTests, add_1_game_and_read_name_game_4_expect_throw)
     //THEN
     ASSERT_THROW(line.getGame(3).getName(), std::out_of_range);
 }
+
+TEST_F(LaneTests, adding_a_game_in_progress)
+{
+    //WHEN
+    Game game("Boniek:12|X");
+    Lane lane;
+    lane.addGame(game);
+    //THEN
+    ASSERT_EQ("Game in progress.", lane.getStatusLane());
+}
+
+TEST_F(LaneTests, adding_a_finished_game)
+{
+    //WHEN
+    Game game("Boniek:12|X|2/|31|45|X|12|12|12|11");
+    Lane lane;
+    lane.addGame(game);
+    //THEN
+    ASSERT_EQ("Game finished.", lane.getStatusLane());
+}
+
+TEST_F(LaneTests, no_game)
+{
+    //WHEN
+    Game game("Boniek:12|X");
+    Lane lane;
+    //THEN
+    ASSERT_EQ("No games.", lane.getStatusLane());
+}
+

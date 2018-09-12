@@ -28,7 +28,7 @@ std::string Lane::getStatusLane() const
 {
     if (getNumberOfGames() == 0)
     {
-        return "No games";
+        return "No games.";
 	}
     if (getNumberOfGames() != 0)
     {
