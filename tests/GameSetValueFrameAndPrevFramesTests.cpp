@@ -26,8 +26,6 @@ struct GameTests : public ::testing::Test
 
 TEST_F(GameTests, GivenFrameFiveWithZeroShouldHaveValue5)
 {
-    //GIVEN
-    std::vector<int> expectedValuesFor5And0={5};
     //WHEN
     game.setValueFrameAndPrevFrames(3, "5-");
     //THEN
