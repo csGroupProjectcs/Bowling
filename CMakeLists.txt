@@ -78,6 +78,8 @@ if(Boost_FOUND)
         tests/LaneTests.cpp
         tests/BowlingTestsToStringMethod.cpp
         tests/specificBehaviorTests.cpp
+        tests/GameSetValueFrameAndPrevFramesTests.cpp
+        tests/GameScoreTests.cpp
         tests/BowlingTestSaveFile.cpp
     )
 
