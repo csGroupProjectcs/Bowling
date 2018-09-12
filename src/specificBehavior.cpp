@@ -24,6 +24,6 @@ void specificBehavior(int argc, char* argv[])
     {
         Bowling bowling;
         bowling.readDirectory(argv[1]);
-        //bowling.save(argv[[2]);
+        bowling.writingDataToFile(argv[2]);
     }
 }

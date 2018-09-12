@@ -41,7 +41,7 @@ TEST_F(specificBehaviorTests, given_path_to_directory_expect_information_about_g
     //THEN
     ASSERT_EQ("### Lane 1: GAME STATUS ###\nHenryk 24\n### Lane 2: GAME STATUS ###\nKevin 16\nSandra 16\n### Lane 3: GAME STATUS ###\n", output);
 }
-/* uncoment this after metod save() will be ready
+
 TEST_F(specificBehaviorTests, given_path_to_directory_and_name_of_file_expect_save_information_about_game_in_to_the_file)
 {
     //GIVEN
@@ -58,4 +58,4 @@ TEST_F(specificBehaviorTests, given_path_to_directory_and_name_of_file_expect_sa
     }
     //THEN
     ASSERT_EQ("### Lane 1: GAME STATUS ###Henryk 24### Lane 2: GAME STATUS ###Kevin 16Sandra 16### Lane 3: GAME STATUS ###", output);
-}*/
+}
