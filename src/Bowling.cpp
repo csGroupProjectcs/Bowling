@@ -1,7 +1,8 @@
 #include "Bowling.hpp"
 #include <iostream>
 #include <stdexcept>
-
+#include <string>
+#include <sstream>
 Bowling::Bowling() : numberOfLanes_(0) {}
 
 int Bowling::getNumberOfLanes() const
@@ -63,4 +64,19 @@ void Bowling::readDirectory(path p)
     {
         std::cout << ex.what() << '\n';
     }
+}
+
+std::string Bowling::toString() const
+{
+    std::stringstream ss;
+    for (int i = 0; i < getNumberOfLanes(); i++)
+    {
+        ss << "### Lane " << i+1 << ": " << "GAME STATUS" << " ###\n"; // game status method is needed
+
+        for (int x = 0; x < getLane(i).getNumberOfGames(); x++)
+        {
+            ss << getLane(i).getGame(x).getName() << " " << getLane(i).getGame(x).score() << "\n";
+        }
+    }
+    return ss.str();
 }
