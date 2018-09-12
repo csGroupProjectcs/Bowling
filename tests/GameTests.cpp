@@ -5,13 +5,6 @@ struct GameTests : public ::testing::Test
 {
     int firstBall, secondBall, score;
     Game game;
-    void fillSetValueFrameAndPrevFrames(std::string frameScore[12])
-    {
-        for (int i=0; i<12; i++)
-        {
-            game.setValueFrameAndPrevFrames(i, frameScore[i]);
-        }
-    }
 };
 
 TEST_F(GameTests, set_Is_Strike_Or_Spare)
