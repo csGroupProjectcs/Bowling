@@ -117,4 +117,3 @@ TEST_F(GameTests, GivenValueZeroWithSpareConvertValuesToPairOfIntsShouldReturn0A
     ASSERT_EQ(0, firstBall);
     ASSERT_EQ(10, secondBall);
 }
-
