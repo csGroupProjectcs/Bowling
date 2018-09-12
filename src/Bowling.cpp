@@ -95,7 +95,7 @@ void Bowling::writingDataToFile(std::string directory) const
         dataOut << toString();
         dataOut.close();
     }
-    catch (std::ifstream::failure ex) 
+    catch (std::ifstream::failure& ex) 
     {
     std::cerr << "Exception opening/closing file" << std::endl;
     }
