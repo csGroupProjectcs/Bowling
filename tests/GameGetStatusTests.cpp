@@ -26,6 +26,16 @@ TEST_F (GetStatusGameTests, GivenUnfinishedGameWithIncompleteFrameAtEndShouldHav
     ASSERT_EQ("game in progress", status);
 }
 
+TEST_F (GetStatusGameTests, GivenUnfinishedGameWith10IncompleteFrameAtEndShouldHaveStatusGameInProgress)
+{
+    //GIVEN
+    Game game(":12|21|4/|12|X|41|11|-4|--|3");
+    //WHEN
+    status = game.getStatusGame();
+    //THEN
+    ASSERT_EQ("game in progress", status);
+}
+
 TEST_F (GetStatusGameTests, GivenFinishedGameShouldHaveStatusGameFinished)
 {
     //GIVEN
@@ -70,6 +80,16 @@ TEST_F (GetStatusGameTests, GivenFinishedGameWithStrikeIn10FrameShouldHaveStatus
 {
     //GIVEN
     Game game(":12|21|4/|12|X|41|11|-4|--|X||52");
+    //WHEN
+    status = game.getStatusGame();
+    //THEN
+    ASSERT_EQ("game finished", status);
+}
+
+TEST_F (GetStatusGameTests, GivenFinishedGameWithSpareIn10FrameShouldHaveStatusGameFinished)
+{
+    //GIVEN
+    Game game(":12|21|4/|12|X|41|11|-4|--|6/||X");
     //WHEN
     status = game.getStatusGame();
     //THEN
