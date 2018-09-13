@@ -70,3 +70,17 @@ TEST_F(BowlingTests, when_read_directory_and_get_lane_out_of_range_expect_throw)
     //THEN
     ASSERT_THROW(bowling.getLane(48), std::out_of_range);
 }
+
+TEST_F(BowlingTests, add_1_lane_with_1_game_Adam_X_2_expect_message_in_stdout_Lane_1_game_in_progress_Adam_14)
+{
+    //WHEN
+    Game game("Adam:X|2");
+    Lane lane;
+    lane.addGame(game);
+    bowling.addLane(lane);
+    testing::internal::CaptureStdout();
+    bowling.print();
+    std::string output = testing::internal::GetCapturedStdout();
+    //THEN
+    ASSERT_EQ("### Lane 1: game in progress ###\nAdam 14\n", output);
+}

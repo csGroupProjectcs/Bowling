@@ -47,7 +47,7 @@ TEST_F (BowlingTests, testing_saving_data_are_equal_to_expect_data_return_true)
             }
     }
     dataFromFile = ss.str();
-    std::string data = "### Lane 1: GAME STATUS ###\n### Lane 2: GAME STATUS ###\nName4 71\nName5 90\nName6 67\n### Lane 3: GAME STATUS ###\nName7 145\nName8 103\nName9 144\nName10 300\n";
+    std::string data = "### Lane 1: no game ###\n### Lane 2: game in progress ###\nName4 71\nName5 90\nName6 67\n### Lane 3: game in progress ###\nName7 145\nName8 103\nName9 144\nName10 300\n";
 
     //THEN
     ASSERT_EQ(data, dataFromFile);

@@ -16,5 +16,6 @@ public:
     Lane getLane(int number) const;
     void readDirectory(path p);
     std::string toString() const;
+    void print() const;
     void writingDataToFile(std::string directory) const;
 };

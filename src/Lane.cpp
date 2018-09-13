@@ -30,11 +30,5 @@ std::string Lane::getStatusLane() const
     {
         return "no game";
 	}
-    if (getNumberOfGames() != 0)
-    {
-    for (int i = 0; i <= getNumberOfGames(); i++)
-        {
-            return getGame(0).getStatusGame();
-        }
-    }
+    return getGame(0).getStatusGame();
 }

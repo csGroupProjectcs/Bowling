@@ -15,7 +15,7 @@ TEST_F(BowlingTests, toString_compare_given_data_and_shown_data_expect_return_tr
     lane1.addGame(game1);
     bowling.addLane(lane1);
     //WHEN
-    std::string data = "### Lane 1: GAME STATUS ###\nName 110\n";
+    std::string data = "### Lane 1: game in progress ###\nName 110\n";
     std::string dataFromMethod = bowling.toString();
     //THEN
     ASSERT_EQ(data, dataFromMethod);
@@ -27,7 +27,7 @@ TEST_F(BowlingTests, toString_compare_empty_lane_and_shown_data_expect_return_tr
     Lane lane1;
     bowling.addLane(lane1);
     //WHEN
-    std::string data = "### Lane 1: GAME STATUS ###\n";
+    std::string data = "### Lane 1: no game ###\n";
     std::string dataFromMethod = bowling.toString();
     //THEN
     ASSERT_EQ(data, dataFromMethod);
@@ -43,7 +43,7 @@ TEST_F(BowlingTests, toString_compare_many_empty_lanes_and_shown_data_expect_ret
     bowling.addLane(lane2);
     bowling.addLane(lane3);
     //WHEN
-    std::string data = "### Lane 1: GAME STATUS ###\n### Lane 2: GAME STATUS ###\n### Lane 3: GAME STATUS ###\n";
+    std::string data = "### Lane 1: no game ###\n### Lane 2: no game ###\n### Lane 3: no game ###\n";
     std::string dataFromMethod = bowling.toString();
     //THEN
     ASSERT_EQ(data, dataFromMethod);
@@ -62,7 +62,7 @@ TEST_F(BowlingTests, toString_compare_many_games_and_shown_data_expect_return_tr
     bowling.addLane(lane1);
 
     //WHEN
-    std::string data = "### Lane 1: GAME STATUS ###\nName1 119\nName2 114\nName3 144\n";
+    std::string data = "### Lane 1: game in progress ###\nName1 119\nName2 114\nName3 144\n";
     std::string dataFromMethod = bowling.toString();
     //THEN
     ASSERT_EQ(data, dataFromMethod);
@@ -94,7 +94,7 @@ TEST_F(BowlingTests, toString_compare_given_data_to_many_lanes_and_many_games_an
     bowling.addLane(lane3);
 
     //WHEN
-    std::string data = "### Lane 1: GAME STATUS ###\n### Lane 2: GAME STATUS ###\nName4 71\nName5 90\nName6 67\n### Lane 3: GAME STATUS ###\nName7 145\nName8 103\nName9 144\nName10 300\n";
+    std::string data = "### Lane 1: no game ###\n### Lane 2: game in progress ###\nName4 71\nName5 90\nName6 67\n### Lane 3: game in progress ###\nName7 145\nName8 103\nName9 144\nName10 300\n";
     std::string dataFromMethod = bowling.toString();
     //THEN
     ASSERT_EQ(data, dataFromMethod);

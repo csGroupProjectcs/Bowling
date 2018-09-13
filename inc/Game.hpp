@@ -8,8 +8,8 @@ class Game
 {
     std::string name_;
     Frame frame_[12];
-    int numberRolls_ = 10;
-    int currentRolls_ = 0;
+    int numberRolls_;
+    int currentRolls_;
 public:
     Game();
     explicit Game(const std::string& oneLine);

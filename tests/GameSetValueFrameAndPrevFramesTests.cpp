@@ -9,7 +9,7 @@ struct GameTests : public ::testing::Test
 
     void fillSetValueFrameAndPrevFrames (std::vector<std::string> frameScore)
     {
-        for (int i = 0; i < frameScore.size() && i < 12; i++)
+        for (unsigned int i = 0; i < frameScore.size() && i < 12; i++)
         {
             game.setValueFrameAndPrevFrames(i, frameScore[i]);
         }
@@ -17,7 +17,7 @@ struct GameTests : public ::testing::Test
 
     void fillASSERT_EQ (std::vector<int> expectedValues)
     {
-        for (int i = 0; i < expectedValues.size(); i++)
+        for (unsigned int i = 0; i < expectedValues.size(); i++)
         {
             ASSERT_EQ(expectedValues[i], game.getFrame(i).getValue());
         }

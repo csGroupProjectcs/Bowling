@@ -7,7 +7,7 @@ struct GameTests : public ::testing::Test
     Game game;
     void fillSetValueFrameAndPrevFrames (std::vector<std::string> frameScore)
     {
-        for (int i = 0; i < frameScore.size() && i < 12; i++)
+        for (unsigned int i = 0; i < frameScore.size() && i < 12; i++)
         {
             game.setValueFrameAndPrevFrames(i, frameScore[i]);
         }

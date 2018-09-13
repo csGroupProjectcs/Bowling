@@ -53,13 +53,15 @@ if(Boost_FOUND)
         src/Frame.cpp
         src/Game.cpp
         src/Lane.cpp
+        src/specificBehavior.cpp
     )
 
     include_directories(${Boost_INCLUDE_DIRS})
     include_directories(src)
     include_directories(inc)
     add_library(${PROJECT_NAME}-lib ${SRC_LIST})
-    add_executable(${PROJECT_NAME} src/main.cpp ${Boost_LIBRARIES})
+    add_executable(${PROJECT_NAME} src/main.cpp)
+    target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib ${Boost_LIBRARIES})
 
     if (UNIX)
         target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib pthread)
@@ -75,6 +77,7 @@ if(Boost_FOUND)
         tests/test_main.cpp
         tests/LaneTests.cpp
         tests/BowlingTestsToStringMethod.cpp
+        tests/specificBehaviorTests.cpp
         tests/GameSetValueFrameAndPrevFramesTests.cpp
         tests/GameScoreTests.cpp
         tests/BowlingTestSaveFile.cpp

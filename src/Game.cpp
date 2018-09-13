@@ -5,7 +5,7 @@
 
 Game::Game() {}
 
-Game::Game(const std::string& framesOfOneGame) : currentRolls_ (0), numberRolls_(10)
+Game::Game(const std::string& framesOfOneGame) : numberRolls_(10), currentRolls_(0)
 {
     std::stringstream frames(framesOfOneGame);
     std::string oneFrame;
