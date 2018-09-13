@@ -9,7 +9,7 @@ class Game
     std::string name_;
     Frame frame_[12];
     int numberRolls_;
-    int currentRolls_;
+    int frameCounter_;
 public:
     Game();
     explicit Game(const std::string& oneLine);
