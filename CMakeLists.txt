@@ -45,7 +45,7 @@ project(Bowling)
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.67.0 COMPONENTS filesystem system)
+find_package(Boost 1.65.1 COMPONENTS filesystem system)
 
 if(Boost_FOUND)
     set(SRC_LIST
@@ -81,6 +81,7 @@ if(Boost_FOUND)
         tests/GameSetValueFrameAndPrevFramesTests.cpp
         tests/GameScoreTests.cpp
         tests/BowlingTestSaveFile.cpp
+        tests/GameGetStatusTests.cpp
     )
 
     link_libraries(gtest)
