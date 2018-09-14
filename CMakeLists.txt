@@ -81,6 +81,7 @@ if(Boost_FOUND)
         tests/GameSetValueFrameAndPrevFramesTests.cpp
         tests/GameScoreTests.cpp
         tests/BowlingTestSaveFile.cpp
+        tests/GameGetStatusTests.cpp
     )
 
     link_libraries(gtest)

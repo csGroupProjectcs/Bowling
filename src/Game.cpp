@@ -2,10 +2,11 @@
 #include <algorithm>
 #include <tuple>
 #include <sstream>
+#include <iostream>
 
 Game::Game() {}
 
-Game::Game(const std::string& framesOfOneGame) : numberRolls_(10), currentRolls_(0)
+Game::Game(const std::string& framesOfOneGame) : frameCounter_(0)
 {
     std::stringstream frames(framesOfOneGame);
     std::string oneFrame;
@@ -19,8 +20,15 @@ Game::Game(const std::string& framesOfOneGame) : numberRolls_(10), currentRolls_
     {
         if (getline(frames, bonusBalls))
         {
-            setValueFrameAndPrevFrames(10, bonusBalls.substr(0, 1));
-            setValueFrameAndPrevFrames(11, bonusBalls.substr(1, 1));
+            if(bonusBalls.size() == 2)
+            {
+                setValueFrameAndPrevFrames(10, bonusBalls.substr(0, 1));
+                setValueFrameAndPrevFrames(11, bonusBalls.substr(1, 1));
+            }
+            else if(bonusBalls.size() == 1)
+            {
+                setValueFrameAndPrevFrames(10, bonusBalls.substr(0, 1));
+            }
         }
     }
 }
@@ -89,6 +97,8 @@ Frame Game::getFrame(unsigned short int position)
 
 void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
 {
+    if(value.size() == 2 or value == "X" or pos>9) frameCounter_++; 
+
     int firstBall, secondBall;
     std::tie(firstBall, secondBall) = convertValueToPairOfInts(value);
 
@@ -121,28 +131,14 @@ void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
             frame_[pos - 2].addValue(firstBall);
         }
     }
-    currentRolls_++;
-    if (pos == 9 && value.size() == 2 && value[1] == '/')
-    {
-        numberRolls_ = 11;
-    }
-    if (pos == 9 && value[0] == 'X')
-    {
-        numberRolls_ = 12;
-    }
-    if (pos == 9 && value.size() == 1)
-    {
-        currentRolls_ = 9;
-    }
 }
+
 std::string Game::getStatusGame()
 {
-    if (currentRolls_ == numberRolls_)
-    {
+    int numberOfFrames = 10;
+    if (frame_[9].isSpare()) numberOfFrames = 11;
+    else if (frame_[9].isStrike()) numberOfFrames = 12;
+    if (frameCounter_ == numberOfFrames)
         return "game finished";
-    }
-    else
-    {
-        return "game in progress";
-    }
+    else return "game in progress";
 }
