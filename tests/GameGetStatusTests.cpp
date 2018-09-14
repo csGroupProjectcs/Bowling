@@ -4,6 +4,8 @@
 struct GetStatusGameTests : public ::testing::Test
 {
     std::string status;
+    const std::string inProgress {"game in progress"};
+    const std::string finished {"game finished"};
 };
 
 TEST_F (GetStatusGameTests, GivenUnfinishedGameWithCompleteFrameAtEndShouldHaveStatusGameInProgress)
@@ -13,7 +15,7 @@ TEST_F (GetStatusGameTests, GivenUnfinishedGameWithCompleteFrameAtEndShouldHaveS
     //WHEN
     status = game.getStatusGame();
     //THEN
-    ASSERT_EQ("game in progress", status);
+    ASSERT_EQ(inProgress, status);
 }
 
 TEST_F (GetStatusGameTests, GivenUnfinishedGameWithIncompleteFrameAtEndShouldHaveStatusGameInProgress)
@@ -23,7 +25,7 @@ TEST_F (GetStatusGameTests, GivenUnfinishedGameWithIncompleteFrameAtEndShouldHav
     //WHEN
     status = game.getStatusGame();
     //THEN
-    ASSERT_EQ("game in progress", status);
+    ASSERT_EQ(inProgress, status);
 }
 
 TEST_F (GetStatusGameTests, GivenUnfinishedGameWith10IncompleteFrameAtEndShouldHaveStatusGameInProgress)
@@ -33,7 +35,7 @@ TEST_F (GetStatusGameTests, GivenUnfinishedGameWith10IncompleteFrameAtEndShouldH
     //WHEN
     status = game.getStatusGame();
     //THEN
-    ASSERT_EQ("game in progress", status);
+    ASSERT_EQ(inProgress, status);
 }
 
 TEST_F (GetStatusGameTests, GivenFinishedGameShouldHaveStatusGameFinished)
@@ -43,7 +45,7 @@ TEST_F (GetStatusGameTests, GivenFinishedGameShouldHaveStatusGameFinished)
     //WHEN
     status = game.getStatusGame();
     //THEN
-    ASSERT_EQ("game finished", status);
+    ASSERT_EQ(finished, status);
 }
 
 TEST_F (GetStatusGameTests, GivenUnfinishedGameWithSpareIn10FrameShouldHaveStatusGameInProgress)
@@ -53,7 +55,7 @@ TEST_F (GetStatusGameTests, GivenUnfinishedGameWithSpareIn10FrameShouldHaveStatu
     //WHEN
     status = game.getStatusGame();
     //THEN
-    ASSERT_EQ("game in progress", status);
+    ASSERT_EQ(inProgress, status);
 }
 
 TEST_F (GetStatusGameTests, GivenUnfinishedGameWithStrikeIn10FrameAnd0BonusBallsShouldHaveStatusGameInProgress)
@@ -63,7 +65,7 @@ TEST_F (GetStatusGameTests, GivenUnfinishedGameWithStrikeIn10FrameAnd0BonusBalls
     //WHEN
     status = game.getStatusGame();
     //THEN
-    ASSERT_EQ("game in progress", status);
+    ASSERT_EQ(inProgress, status);
 }
 
 TEST_F (GetStatusGameTests, GivenUnfinishedGameWithStrikeIn10FrameAnd1BonusBallsShouldHaveStatusGameInProgress)
@@ -73,7 +75,7 @@ TEST_F (GetStatusGameTests, GivenUnfinishedGameWithStrikeIn10FrameAnd1BonusBalls
     //WHEN
     status = game.getStatusGame();
     //THEN
-    ASSERT_EQ("game in progress", status);
+    ASSERT_EQ(inProgress, status);
 }
 
 TEST_F (GetStatusGameTests, GivenFinishedGameWithStrikeIn10FrameShouldHaveStatusGameFinished)
@@ -83,7 +85,7 @@ TEST_F (GetStatusGameTests, GivenFinishedGameWithStrikeIn10FrameShouldHaveStatus
     //WHEN
     status = game.getStatusGame();
     //THEN
-    ASSERT_EQ("game finished", status);
+    ASSERT_EQ(finished, status);
 }
 
 TEST_F (GetStatusGameTests, GivenFinishedGameWithSpareIn10FrameShouldHaveStatusGameFinished)
@@ -93,5 +95,5 @@ TEST_F (GetStatusGameTests, GivenFinishedGameWithSpareIn10FrameShouldHaveStatusG
     //WHEN
     status = game.getStatusGame();
     //THEN
-    ASSERT_EQ("game finished", status);
+    ASSERT_EQ(finished, status);
 }

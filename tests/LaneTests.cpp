@@ -18,9 +18,10 @@ TEST_F(LaneTests, add_1_game_Leon_3spare_5_expect_NumberOfGames_1_name_Leon_scor
     //WHEN
     Game game("Leon:3/|5");
     line.addGame(game);
+    const static std::string expectName {"Leon"};
     //THEN
     ASSERT_EQ(1, line.getNumberOfGames());
-    ASSERT_EQ("Leon", line.getGame(0).getName());
+    ASSERT_EQ(expectName, line.getGame(0).getName());
     ASSERT_EQ(20, line.getGame(0).score());
 }
 
@@ -39,8 +40,9 @@ TEST_F(LaneTests, adding_a_game_in_progress)
     Game game("Boniek:12|X");
     Lane lane;
     lane.addGame(game);
+    const static std::string expectStatus {"game in progress"};
     //THEN
-    ASSERT_EQ("game in progress", lane.getStatusLane());
+    ASSERT_EQ(expectStatus, lane.getStatusLane());
 }
 
 TEST_F(LaneTests, adding_a_finished_game)
@@ -49,8 +51,9 @@ TEST_F(LaneTests, adding_a_finished_game)
     Game game("Boniek:12|X|2/|31|45|X|12|12|12|11");
     Lane lane;
     lane.addGame(game);
+    const static std::string expectStatus {"game finished"};
     //THEN
-    ASSERT_EQ("game finished", lane.getStatusLane());
+    ASSERT_EQ(expectStatus, lane.getStatusLane());
 }
 
 TEST_F(LaneTests, no_game)
@@ -73,6 +76,7 @@ TEST_F(LaneTests, GivenGamesInLaneSholudHaveSttatusInProgress)
     lane.addGame(game2);
     lane.addGame(game3);
     lane.addGame(game4);
+    const static std::string expectStatus {"game in progress"};
     //THEN
-    ASSERT_EQ("game in progress", lane.getStatusLane());
+    ASSERT_EQ(expectStatus, lane.getStatusLane());
 }
