@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "Game.hpp"
 
-struct GameTests : public ::testing::Test
+struct GameScoreTests : public ::testing::Test
 {
     int firstBall, secondBall, score;
     Game game;
@@ -14,7 +14,7 @@ struct GameTests : public ::testing::Test
     }
 };
 
-TEST_F(GameTests, GivenTenFramesWitchStrikeAndStrikeInBothBonusBallsShouldHaveScoreValueEqual_300)
+TEST_F(GameScoreTests, GivenTenFramesWitchStrikeAndStrikeInBothBonusBallsShouldHaveScoreValueEqual_300)
 {
     //GIVEN
     std::vector<std::string> tenStrikeAndTwoStrikeBonusValue = {
@@ -25,7 +25,7 @@ TEST_F(GameTests, GivenTenFramesWitchStrikeAndStrikeInBothBonusBallsShouldHaveSc
     ASSERT_EQ(300, game.score());
 }
 
-TEST_F(GameTests, GivenTenFramesWitchStrikeAndOneAndFiveInBonusBallsShouldHaveScoreValueEqual_277)
+TEST_F(GameScoreTests, GivenTenFramesWitchStrikeAndOneAndFiveInBonusBallsShouldHaveScoreValueEqual_277)
 {
     //GIVEN
     std::vector<std::string> tenStrikeAnd1And5BonusValue = {
@@ -36,7 +36,7 @@ TEST_F(GameTests, GivenTenFramesWitchStrikeAndOneAndFiveInBonusBallsShouldHaveSc
     ASSERT_EQ(277, game.score());
 }
 
-TEST_F(GameTests, GivenTenFramesWitchBallsNineAndZeroShouldHaveScoreValueEqual_90)
+TEST_F(GameScoreTests, GivenTenFramesWitchBallsNineAndZeroShouldHaveScoreValueEqual_90)
 {
     //GIVEN
     std::vector<std::string> ten9And0BonusValue = {
@@ -47,7 +47,7 @@ TEST_F(GameTests, GivenTenFramesWitchBallsNineAndZeroShouldHaveScoreValueEqual_9
     ASSERT_EQ(90, game.score());
 }
 
-TEST_F(GameTests, GivenTenFramesWithFiveAndSpareAndFourInBonusBallShouldHaveScoreValueEqual_149)
+TEST_F(GameScoreTests, GivenTenFramesWithFiveAndSpareAndFourInBonusBallShouldHaveScoreValueEqual_149)
 {
     //GIVEN
     std::vector<std::string> ten5And4BonusValue = {
@@ -58,7 +58,7 @@ TEST_F(GameTests, GivenTenFramesWithFiveAndSpareAndFourInBonusBallShouldHaveScor
     ASSERT_EQ(149, game.score());
 }
 
-TEST_F(GameTests, GivenTenRandomFramesShouldHaveScoreValueEqual_167)
+TEST_F(GameScoreTests, GivenTenRandomFramesShouldHaveScoreValueEqual_167)
 {
     //GIVEN
     std::vector<std::string> randomValue = {
