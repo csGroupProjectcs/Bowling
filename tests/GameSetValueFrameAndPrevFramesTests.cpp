@@ -38,137 +38,115 @@ TEST_F(GameSetValueFrameAndPrevFramesTests, GivenFrameFiveWithZeroShouldHaveValu
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenFrameTwoWithSpareAnd51ShouldHaveValues15And6)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> one2WithSpareAndOne51 = {"2/", "51"};
     //WHEN
     fillSetValueFrameAndPrevFrames(one2WithSpareAndOne51);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(15, 6, 0, 0, 0, 0, 0, 0, 0, 0));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(15, 6, 0, 0, 0, 0, 0, 0, 0, 0));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenThreeFramesWithStrikeShouldHaveValues30And20And10)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> threeStrikeFrames = {"X", "X", "X"};
     //WHEN
     fillSetValueFrameAndPrevFrames(threeStrikeFrames);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(30, 20, 10, 0, 0, 0, 0, 0, 0, 0));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(30, 20, 10, 0, 0, 0, 0, 0, 0, 0));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenFrameStrikeAndZeroWithSpareAndStrikeShouldHaveValues20And20And10)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> frameStrikeAndZeroWithSpareAndStrike = {"X", "-/", "X"};
     //WHEN
     fillSetValueFrameAndPrevFrames(frameStrikeAndZeroWithSpareAndStrike);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(20, 20, 10, 0, 0, 0, 0, 0, 0, 0));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(20, 20, 10, 0, 0, 0, 0, 0, 0, 0));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenFrameStrikeAndSixWithSpareAndTwoZerosShouldHaveValues20and10And0)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> frameStrikeAndSixWithSpareAndTwoZeros = {"X", "6/", "--"};
     //WHEN
     fillSetValueFrameAndPrevFrames(frameStrikeAndSixWithSpareAndTwoZeros);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(20, 10, 0, 0, 0, 0, 0, 0, 0, 0));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(20, 10, 0, 0, 0, 0, 0, 0, 0, 0));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenFrameStrikeAnd34ShouldHaveValues17and7)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> frameStrikeAnd34ShouldHaveValues17and7 = {"X", "34"};
     //WHEN
     fillSetValueFrameAndPrevFrames(frameStrikeAnd34ShouldHaveValues17and7);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(17, 7, 0, 0, 0, 0, 0, 0, 0, 0));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(17, 7, 0, 0, 0, 0, 0, 0, 0, 0));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenFrame34AndIncompleteFrame4ShouldHaveValues7And4)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> frame34AndIncompleteFrame4ShouldHaveValues7And4 = {"34", "4"};
     //WHEN
     fillSetValueFrameAndPrevFrames(frame34AndIncompleteFrame4ShouldHaveValues7And4);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(7, 4, 0, 0, 0, 0, 0, 0, 0, 0));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(7, 4, 0, 0, 0, 0, 0, 0, 0, 0));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenTenFramesWitchStrikeAndOneAndFiveInBonusBallsShouldHaveValueEqual_30_InFirstEightFrames_21_AtNineFrameAnd_16_InTenFrame)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> frameTenStrikeAndOneAndFiveInBonusBalls = {
         "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "1", "5"};
     //WHEN
     fillSetValueFrameAndPrevFrames(frameTenStrikeAndOneAndFiveInBonusBalls);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(30, 30, 30, 30, 30, 30, 30, 30, 21, 16));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(30, 30, 30, 30, 30, 30, 30, 30, 21, 16));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenTenFramesWitchStrikeAndStrikeInBothBonusBallsShouldHaveValueEqual_30_InAllTenFrames)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> frameTenStrikeAndStrikeInBothBonusBalls = {
         "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"};
     //WHEN
     fillSetValueFrameAndPrevFrames(frameTenStrikeAndStrikeInBothBonusBalls);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(30, 30, 30, 30, 30, 30, 30, 30, 30, 30));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(30, 30, 30, 30, 30, 30, 30, 30, 30, 30));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenTenFramesWitchBallsNineAndZeroShouldHaveValuesNineInFirstTenFrames)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> frameTenBallsNineAndZero = {
         "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "0", "0"};
     //WHEN
     fillSetValueFrameAndPrevFrames(frameTenBallsNineAndZero);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(9, 9, 9, 9, 9, 9, 9, 9, 9, 9));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(9, 9, 9, 9, 9, 9, 9, 9, 9, 9));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenTenFramesWithFiveAndSpareAndFourInBonusBallShouldHaveValuesInFirstNineFramesEqual15AndInLast14)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> frameTenFiveAndSpareAndFourInBonusBall = {
         "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "4", "0"};
     //WHEN
     fillSetValueFrameAndPrevFrames(frameTenFiveAndSpareAndFourInBonusBall);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(15, 15, 15, 15, 15, 15, 15, 15, 15, 14));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(15, 15, 15, 15, 15, 15, 15, 15, 15, 14));
 }
 
 TEST_F(GameSetValueFrameAndPrevFramesTests, GivenFramesShouldHaveFollowingValues_20_19_9_18_8_10_6_30_28_19)
 {
     //GIVEN
-    std::vector<int> frame (10);
     std::vector<std::string> framesWithRandomValue = {
         "X", "7/", "9-", "X", "-8", "8/", "-6", "X", "X", "X", "8", "1"};
     //WHEN
     fillSetValueFrameAndPrevFrames(framesWithRandomValue);
-    frame = fillframesValue();
     //THEN
-    ASSERT_THAT (frame, testing::ElementsAre(20, 19, 9, 18, 8, 10, 6, 30, 28, 19));
+    ASSERT_THAT (fillframesValue(), testing::ElementsAre(20, 19, 9, 18, 8, 10, 6, 30, 28, 19));
 }
 
