@@ -29,9 +29,10 @@ TEST_F(BowlingTests, add_1_lane_with_1_game_Adam_X_2_expect_NumberOfLanes_1_name
     Lane lane;
     lane.addGame(game);
     bowling.addLane(lane);
+    const static std::string expectName {"Adam"};
     //THEN
     ASSERT_EQ(1, bowling.getNumberOfLanes());
-    ASSERT_EQ("Adam", bowling.getLane(0).getGame(0).getName());
+    ASSERT_EQ(expectName, bowling.getLane(0).getGame(0).getName());
     ASSERT_EQ(14, bowling.getLane(0).getGame(0).score());
 }
 
@@ -41,17 +42,19 @@ TEST_F(BowlingTests, when_directory_to_read_no_existe_expect_in_stdout_message_W
     testing::internal::CaptureStdout();
     bowling.readDirectory("asdfsa");
     std::string output = testing::internal::GetCapturedStdout();
+    const static std::string expectMessage {"Wrong directory\n"};
     //THEN
-    ASSERT_EQ("Wrong directory\n", output);
+    ASSERT_EQ(expectMessage, output);
 }
 
 TEST_F(BowlingTests, when_read_directory_data_tests_expect_numberOfLanes_3_in_lane_2_in_game_2_expect_name_Sandra_score_16)
 {
     //WHEN
     bowling.readDirectory("../tests/data_tests");
+    const static std::string expectName {"Sandra"};
     //THEN
     ASSERT_EQ(3, bowling.getNumberOfLanes());
-    ASSERT_EQ("Sandra", bowling.getLane(1).getGame(1).getName());
+    ASSERT_EQ(expectName, bowling.getLane(1).getGame(1).getName());
     ASSERT_EQ(16, bowling.getLane(1).getGame(1).score());
 }
 
@@ -81,6 +84,7 @@ TEST_F(BowlingTests, add_1_lane_with_1_game_Adam_X_2_expect_message_in_stdout_La
     testing::internal::CaptureStdout();
     bowling.print();
     std::string output = testing::internal::GetCapturedStdout();
+    const static std::string expectMessage {"### Lane 1: game in progress ###\nAdam 14\n"};
     //THEN
-    ASSERT_EQ("### Lane 1: game in progress ###\nAdam 14\n", output);
+    ASSERT_EQ(expectMessage, output);
 }

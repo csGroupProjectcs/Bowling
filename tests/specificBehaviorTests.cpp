@@ -4,6 +4,8 @@
 
 struct specificBehaviorTests : public ::testing::Test
 {
+    const std::string helpMessage {"This is program for score bowling \nenter ./Bowling nameDirectoryToread to print result to screen \nor ./Bowling nameDirectoryToread nameFileToSave\n"};
+    const std::string expectMessage {"### Lane 1: game in progress ###\nHenryk 24\n### Lane 2: game in progress ###\nKevin 16\nSandra 16\n### Lane 3: no game ###\n"};
 };
 
 TEST_F(specificBehaviorTests, given_dash_h_expect_info_help_message)
@@ -15,7 +17,7 @@ TEST_F(specificBehaviorTests, given_dash_h_expect_info_help_message)
     specificBehavior(2, input);
     std::string output = testing::internal::GetCapturedStdout();
     //THEN
-    ASSERT_EQ("This is program for score bowling \nenter ./Bowling nameDirectoryToread to print result to screen \nor ./Bowling nameDirectoryToread nameFileToSave\n", output);
+    ASSERT_EQ(helpMessage, output);
 }
 
 TEST_F(specificBehaviorTests, given_dash_dash_help_expect_info_help_message)
@@ -27,7 +29,7 @@ TEST_F(specificBehaviorTests, given_dash_dash_help_expect_info_help_message)
     specificBehavior(2, input);
     std::string output = testing::internal::GetCapturedStdout();
     //THEN
-    ASSERT_EQ("This is program for score bowling \nenter ./Bowling nameDirectoryToread to print result to screen \nor ./Bowling nameDirectoryToread nameFileToSave\n", output);
+    ASSERT_EQ(helpMessage, output);
 }
 
 TEST_F(specificBehaviorTests, given_path_to_directory_expect_information_about_games)
@@ -39,7 +41,7 @@ TEST_F(specificBehaviorTests, given_path_to_directory_expect_information_about_g
     specificBehavior(2, input);
     std::string output = testing::internal::GetCapturedStdout();
     //THEN
-    ASSERT_EQ("### Lane 1: game in progress ###\nHenryk 24\n### Lane 2: game in progress ###\nKevin 16\nSandra 16\n### Lane 3: no game ###\n", output);
+    ASSERT_EQ(expectMessage, output);
 }
 
 TEST_F(specificBehaviorTests, given_path_to_directory_and_name_of_file_expect_save_information_about_game_in_to_the_file)
@@ -54,8 +56,8 @@ TEST_F(specificBehaviorTests, given_path_to_directory_and_name_of_file_expect_sa
     std::string output;
     while (std::getline(file, dataLine))
     {
-        output += dataLine;
+        output += dataLine + "\n";
     }
     //THEN
-    ASSERT_EQ("### Lane 1: game in progress ###Henryk 24### Lane 2: game in progress ###Kevin 16Sandra 16### Lane 3: no game ###", output);
+    ASSERT_EQ(expectMessage, output);
 }

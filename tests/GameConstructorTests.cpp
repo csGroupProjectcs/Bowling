@@ -4,6 +4,7 @@
 struct GameConstructorTests: public ::testing::Test
 {
     int score;
+    const std::string noName {""};
 };
 
 TEST_F(GameConstructorTests, NameShouldBeEmptyForDefaultConstructor)
@@ -11,15 +12,16 @@ TEST_F(GameConstructorTests, NameShouldBeEmptyForDefaultConstructor)
     //GIVEN
     Game game;
     //THEN
-    ASSERT_EQ("", game.getName());
+    ASSERT_EQ(noName, game.getName());
 }
 
 TEST_F(GameConstructorTests,  NameShouldBeLeon)
 {
     //GIVEN
     Game game("Leon:X|X|X|16");
+    const static std::string expectName {"Leon"};
     //THEN
-    ASSERT_EQ("Leon", game.getName());
+    ASSERT_EQ(expectName, game.getName());
 }
 
 TEST_F(GameConstructorTests,  NameShouldBeEmpty)
@@ -27,7 +29,7 @@ TEST_F(GameConstructorTests,  NameShouldBeEmpty)
     //GIVEN
     Game game(":X|X|X|16");
     //THEN
-    ASSERT_EQ("", game.getName());
+    ASSERT_EQ(noName, game.getName());
 }
 
 TEST_F(GameConstructorTests,  NameShouldBeEmptyAndScoreShouldBe75)
@@ -37,7 +39,7 @@ TEST_F(GameConstructorTests,  NameShouldBeEmptyAndScoreShouldBe75)
     //WHEN
     score = game.score();
     //THEN
-    ASSERT_EQ("", game.getName());
+    ASSERT_EQ(noName, game.getName());
     ASSERT_EQ(75, score);
 }
 
@@ -45,10 +47,11 @@ TEST_F(GameConstructorTests,  NameShouldBeAdamAndScoreShouldBe300)
 {
     //GIVEN
     Game game("Adam:X|X|X|X|X|X|X|X|X|X||XX");
+    const static std::string expectName {"Adam"};
     //WHEN
     score = game.score();
     //THEN
-    ASSERT_EQ("Adam", game.getName());
+    ASSERT_EQ(expectName, game.getName());
     ASSERT_EQ(300, score);
 }
 
@@ -56,10 +59,11 @@ TEST_F(GameConstructorTests,  NameShouldBeMaxAndScoreShouldBe90)
 {
     //GIVEN
     Game game("Max:9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||");
+    const static std::string expectName {"Max"};
     //WHEN
     score = game.score();
     //THEN
-    ASSERT_EQ("Max", game.getName());
+    ASSERT_EQ(expectName, game.getName());
     ASSERT_EQ(90, score);
 }
 
@@ -70,7 +74,7 @@ TEST_F(GameConstructorTests,  NameShouldBeEmptyAndScoreShouldBe150)
     //WHEN
     score = game.score();
     //THEN
-    ASSERT_EQ("", game.getName());
+    ASSERT_EQ(noName, game.getName());
     ASSERT_EQ(150, score);
 }
 
@@ -81,7 +85,7 @@ TEST_F(GameConstructorTests,  NameShouldBeEmptyAndScoreShouldBe167)
     //WHEN
     score = game.score();
     //THEN
-    ASSERT_EQ("", game.getName());
+    ASSERT_EQ(noName, game.getName());
     ASSERT_EQ(167, score);
 }
 
@@ -89,10 +93,11 @@ TEST_F(GameConstructorTests,  NameShouldBeName1AndScoreShouldBe21)
 {
     //GIVEN
     Game game("Name1:X|4-|3");
+    const static std::string expectName {"Name1"};
     //WHEN
     score = game.score();
     //THEN
-    ASSERT_EQ("Name1", game.getName());
+    ASSERT_EQ(expectName, game.getName());
     ASSERT_EQ(21, score);
 }
 
@@ -100,10 +105,11 @@ TEST_F(GameConstructorTests,  NameShouldBeName2AndScoreShouldBe17)
 {
     //GIVEN
     Game game("Name2:34|X|0-");
+    const static std::string expectName {"Name2"};
     //WHEN
     score = game.score();
     //THEN
-    ASSERT_EQ("Name2", game.getName());
+    ASSERT_EQ(expectName, game.getName());
     ASSERT_EQ(17, score);
 }
 
@@ -114,6 +120,6 @@ TEST_F(GameConstructorTests,  NameShouldBeEmptyAndScoreShouldBe24)
     //WHEN
     score = game.score();
     //THEN
-    ASSERT_EQ("", game.getName());
+    ASSERT_EQ(noName, game.getName());
     ASSERT_EQ(24, score);
 }
