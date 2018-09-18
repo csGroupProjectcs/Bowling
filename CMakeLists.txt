@@ -84,7 +84,7 @@ if(Boost_FOUND)
         tests/GameGetStatusTests.cpp
     )
 
-    link_libraries(gtest)
+    link_libraries(gmock)
     add_executable(${PROJECT_NAME}-ut ${TEST_SRC_LIST})
     target_link_libraries(${PROJECT_NAME}-ut ${PROJECT_NAME}-lib ${Boost_LIBRARIES})
 endif()
