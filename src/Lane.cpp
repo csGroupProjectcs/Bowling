@@ -32,7 +32,7 @@ std::string Lane::getStatusLane() const
 	}
     for(int i = 0; i < getNumberOfGames(); i++)
     {
-        if (getGame(i).getStatusGame() == "game in progress") return "game in progress";
+        if (getGame(i).getStatusGame() == false) return "game in progress";
     }
     return "game finished";
 }
