@@ -133,12 +133,12 @@ void Game::setValueFrameAndPrevFrames(int pos, const std::string& value)
     }
 }
 
-std::string Game::getStatusGame()
+bool Game::getStatusGame()
 {
     int numberOfFrames = 10;
     if (frame_[9].isSpare()) numberOfFrames = 11;
     else if (frame_[9].isStrike()) numberOfFrames = 12;
     if (frameCounter_ == numberOfFrames)
-        return "game finished";
-    else return "game in progress";
+        return true;
+    else return false;
 }

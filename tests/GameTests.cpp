@@ -9,8 +9,6 @@ struct GameTests : public ::testing::Test
 
 TEST_F(GameTests, set_Is_Strike_Or_Spare)
 {
-    //GIVEN
-    Game game;
     //WHEN
     game.setIsStrikeOrSpare(1, "-/");
     game.setIsStrikeOrSpare(2, "X");
@@ -21,8 +19,6 @@ TEST_F(GameTests, set_Is_Strike_Or_Spare)
 
 TEST_F(GameTests, get_Frame)
 {
-    //GIVEN
-    Game game;
     //WHEN
     Frame testingObject = game.getFrame(1);
     testingObject.addValue(5);
@@ -32,8 +28,6 @@ TEST_F(GameTests, get_Frame)
 
 TEST_F(GameTests, score_should_be_ten_strike)
 {
-    //GIVEN
-    Game game;
     //WHEN
     std::tie(firstBall, secondBall) = game.convertValueToPairOfInts("X");
     score = firstBall + secondBall;
@@ -43,8 +37,6 @@ TEST_F(GameTests, score_should_be_ten_strike)
 
 TEST_F(GameTests, score_should_be_ten_spare)
 {
-    //GIVEN
-    Game game;
     //WHEN
     std::tie(firstBall, secondBall) = game.convertValueToPairOfInts("2/");
     score = firstBall + secondBall;
@@ -54,8 +46,6 @@ TEST_F(GameTests, score_should_be_ten_spare)
 
 TEST_F(GameTests, score_should_be_nine)
 {
-    //GIVEN
-    Game game;
     //WHEN
     std::tie(firstBall, secondBall) = game.convertValueToPairOfInts("45");
     score = firstBall + secondBall;
@@ -65,8 +55,6 @@ TEST_F(GameTests, score_should_be_nine)
 
 TEST_F(GameTests, score_should_be_seven)
 {
-    //GIVEN
-    Game game;
     //WHEN
     std::tie(firstBall, secondBall) = game.convertValueToPairOfInts("-7");
     score = firstBall + secondBall;
@@ -76,8 +64,6 @@ TEST_F(GameTests, score_should_be_seven)
 
 TEST_F(GameTests, score_should_be_three)
 {
-    //GIVEN
-    Game game;
     //WHEN
     std::tie(firstBall, secondBall) = game.convertValueToPairOfInts("3-");
     score = firstBall + secondBall;
@@ -87,8 +73,6 @@ TEST_F(GameTests, score_should_be_three)
 
 TEST_F(GameTests, GivenValue34ConvertValueToPairOfIntsShouldReturn3And4)
 {
-    //GIVEN
-    Game game;
     //WHEN
     std::tie(firstBall, secondBall) = game.convertValueToPairOfInts("34");
     //THEN
@@ -98,8 +82,6 @@ TEST_F(GameTests, GivenValue34ConvertValueToPairOfIntsShouldReturn3And4)
 
 TEST_F(GameTests, GivenValueStrikeConvertValueToPairOfIntsShouldReturn10And0)
 {
-    //GIVEN
-    Game game;
     //WHEN
     std::tie(firstBall, secondBall) = game.convertValueToPairOfInts("X");
     //THEN
@@ -109,8 +91,6 @@ TEST_F(GameTests, GivenValueStrikeConvertValueToPairOfIntsShouldReturn10And0)
 
 TEST_F(GameTests, GivenValueZeroWithSpareConvertValuesToPairOfIntsShouldReturn0And10)
 {
-    //GIVEN
-    Game game;
     //WHEN
     std::tie(firstBall, secondBall) = game.convertValueToPairOfInts("-/");
     //THEN
