@@ -95,3 +95,4 @@ TEST_F (GetStatusGameTests, GivenFinishedGameWithSpareIn10FrameShouldHaveStatusG
     //THEN
     ASSERT_TRUE(status);
 }
+
